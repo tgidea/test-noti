@@ -8,6 +8,12 @@ app.use(express.static(path.join(__dirname,"client")));
 const Schema=require('./schema');
 const SchemaModel=require('./schemaModel');
 const conn=require('./connection');
+const atCoderDataUpdate = require('./dataUpdate/atcoder');
+const codechefDataUpdate = require('./dataUpdate/codechef');
+const codeforcesDataUpdate = require('./dataUpdate/codeforces');
+const codeforcesNotification = require('./functions/codeforces');
+const codechefNotification = require('./functions/codechef');
+
 require('dotenv').config({ path: __dirname + '/config.env' });
 const private_keys = process.env.PRIVATE_KEY;
 const public_keys='BIVj4YrGKo27YGVRf4oGmWEuQmKP3RU4-hpqYgiOA1euhIxTGww0tRira53W00qOunrM_6jimqHlKL3eKLZ2GQo';
@@ -17,20 +23,11 @@ webpush.setVapidDetails('mailto:gyanexplode@gmail.com', public_keys,private_keys
 app.get('/',(req,res)=>{
     res.sendFile(path.join(__dirname,'client/index.html'))
 })
-const articles=[];
 app.post('/subscribe', (req, res)=>{
-    //get push subscription object from the request
     const subscription = req.body.subscription;
-    // console.log(req.body);
-    //send status 201 for the request
     res.status(201).json({})
-    //create paylod: specified the detals of the push notification
     const payload = JSON.stringify({title: 'first Push Notification learning by me' });
-    //pass the object into sendNotification fucntion and catch any error
     SchemaModel('name', JSON.stringify(subscription));
-    articles.push(subscription);
-    // console.log(articles);
-    
 })
 
 async function runThis(text){
@@ -46,6 +43,36 @@ app.get('/notify/:data',(req,res)=>{
     runThis(data);
     return res.status(200).json();
 })
+
+//Calling json file creater function
+const callingFun = async ()=> {
+    try {
+        atCoderDataUpdate();
+        codechefDataUpdate();
+        codeforcesDataUpdate();
+        setInterval(function () {
+            atCoderDataUpdate();
+            codechefDataUpdate();
+            codeforcesDataUpdate();
+        }, 180000)
+    }
+    catch (err) {
+        console.log(err);
+    }
+}
+callingFun();
+
+function timeToAlert() {
+    console.log('in time to alert');
+    codechefNotification();
+    codeforcesNotification();
+}
+
+timeToAlert();
+setInterval(function () {
+    timeToAlert();
+}, 180000);
+
 
 const port=process.env.PORT || 5001;
 app.listen(port,()=>console.log('Server started'));
