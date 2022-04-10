@@ -1,6 +1,6 @@
-const SubscriptionName = require('../Schema/atcoder');
-const atcoderModel = async (client, subscripton)=>{
-    const mongoose = require('mongoose');
+const SubscriptionName = require('./schema');
+const mongoose = require('mongoose');
+const codechefModel = async (client, subscripton)=>{
     try {
         const info = new SubscriptionName({
             "client": "Test",
@@ -12,4 +12,4 @@ const atcoderModel = async (client, subscripton)=>{
         console.log(err);
     }
 }
-module.exports=atcoderModel;
+module.exports=codechefModel;

@@ -4,6 +4,6 @@ const  subSchema = new mongoose.Schema({
     subscripton: Object
 });
 
-const subscriptionName = mongoose.model('codechefs',subSchema);
+const subscriptionName = mongoose.model('subscribed',subSchema);
 
 module.exports = subscriptionName;

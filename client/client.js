@@ -2,7 +2,7 @@
 
 const public_keys='BIVj4YrGKo27YGVRf4oGmWEuQmKP3RU4-hpqYgiOA1euhIxTGww0tRira53W00qOunrM_6jimqHlKL3eKLZ2GQo';
 const pushButton = document.getElementById('codechef');
-const pushButton2 = document.getElementById('codeforces');
+
 function urlBase64ToUint8Array(base64String) {
     const padding = "=".repeat((4 - base64String.length % 4) % 4);
     const base64 = (base64String + padding)
@@ -20,22 +20,14 @@ function urlBase64ToUint8Array(base64String) {
 pushButton.addEventListener('click',function(){
     pushButton.disabled=true;
     // if('serviceWorker' in navigator && 'PushManager' in window){
-        sended('codechefs')
+        sended()
         .catch((err)=>{
             // document.getElementById('progress').innerText=`${err}`; 
             console.log(err);
         });
 })
-pushButton2.addEventListener('click',function(){
-    pushButton2.disabled=true;
-    // if('serviceWorker' in navigator && 'PushManager' in window){
-        sended('codeforces')
-        .catch((err)=>{
-            // document.getElementById('progress').innerText=`${err}`; 
-            console.log(err);
-        });
-})
-async function sended(site){
+
+async function sended(){
     //register service worker
     const register = await navigator.serviceWorker.register('/worker.js', {
         scope: '/'
@@ -53,7 +45,7 @@ async function sended(site){
     // console.log('fetching');
     await fetch("/subscribe", {
         method: "POST",
-        body: JSON.stringify({subscription,"Site":`${site}`}),
+        body: JSON.stringify({subscription,"Site":`subscribe`}),
         headers: {
             "content-type": "application/json"
         }
