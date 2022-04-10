@@ -71,7 +71,7 @@ function timeToAlert() {
 timeToAlert();
 setInterval(function () {
     timeToAlert();
-}, 180000);
+},3600000);
 
 
 const port=process.env.PORT || 5001;

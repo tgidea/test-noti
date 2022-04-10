@@ -59,7 +59,14 @@ const codechefNotification = async () => {
                                     for (var i = 0; i < result.length; i++) {
                                         const data2 = JSON.parse(result[i].subscripton);
                                         const payload = JSON.stringify({ title: `${title}` });
-                                        webpush.sendNotification(data2, payload).catch(err => console.error('error in sending at codchef'));
+                                        const output=await webpush.sendNotification(data2, payload);
+                                        if(output){
+                                            console.log(output);
+                                        }
+                                        else{
+                                            console.log('Erro in sending msg');
+                                        }
+
                                     }
                                 }
                                 catch (err) {

@@ -11,8 +11,8 @@ const findDate = function (str) {
         return parseInt(`${str[5]}`);
     }
     else {
-        if(str[4]=='e' || str[4]=='y' ){
-            return parseInt(`${str[5]}${str[6]}`); 
+        if (str[4] == 'e' || str[4] == 'y') {
+            return parseInt(`${str[5]}${str[6]}`);
         }
         return parseInt(`${str[4]}${str[5]}`);
     }
@@ -67,16 +67,16 @@ const codeforcesNotification = async () => {
                     // console.log(preTime);
                     const notifyTime = new Date(preTime);
                     const notifyMiliSecond = notifyTime.getTime();
-                    let finalResult=notifyMiliSecond-Date.now();
+                    let finalResult = notifyMiliSecond - Date.now();
                     // console.log(finalResult);
-                    if(finalResult==NaN){
-                        finalResult=2000000;
+                    if (finalResult == NaN) {
+                        finalResult = 2000000;
                     }
-                    if (findDate(time.toString()) == d.getDate() && finalResult>=(-300000) && finalResult<=1810000) {
+                    if (findDate(time.toString()) == d.getDate() && finalResult >= (-300000) && finalResult <= 1810000) {
                         console.log('here in codforces');
                         const result = await Subscribed.find();
-                        finalResult=finalResult-600000;
-                        if(finalResult<0){finalResult=2000};
+                        finalResult = finalResult - 600000;
+                        if (finalResult < 0) { finalResult = 2000 };
                         console.log('in ...', finalResult);
                         const timeOutFunction = (result, title) => {
                             setTimeout(async () => {
@@ -85,8 +85,13 @@ const codeforcesNotification = async () => {
                                         const data2 = JSON.parse(result[i].subscripton);
                                         const payload = JSON.stringify({ title: `${title}` });
                                         try {
-                                            webpush.sendNotification(data2, payload)
-                                                .catch(err => console.error('error in sending at codeforces'));
+                                            const output = await webpush.sendNotification(data2, payload);
+                                            if (output) {
+                                                console.log(output);
+                                            }
+                                            else {
+                                                console.log('Erro in sending msg');
+                                            }
                                         }
                                         catch (err) {
                                             console.log(`error in sending ${i}`);

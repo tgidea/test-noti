@@ -22,7 +22,8 @@ pushButton.addEventListener('click',function(){
     // if('serviceWorker' in navigator && 'PushManager' in window){
         sended()
         .catch((err)=>{
-            pushButton.disabled=false; 
+            pushButton.disabled=false;
+            alert(`Please try again ${err}`); 
             console.log(err);
         });
 })
@@ -50,4 +51,7 @@ async function sended(){
             "content-type": "application/json"
         }
     });
+    if(pushButton.disabled==true){
+        alert('Successfully Subscribed');
+    }
 }
