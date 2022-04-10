@@ -22,7 +22,7 @@ pushButton.addEventListener('click',function(){
     // if('serviceWorker' in navigator && 'PushManager' in window){
         sended()
         .catch((err)=>{
-            // document.getElementById('progress').innerText=`${err}`; 
+            pushButton.disabled=false; 
             console.log(err);
         });
 })
