@@ -42,7 +42,7 @@ async function sended(){
     });
     // document.getElementById('progress').innerText=`fetching`;
     //Send push notification
-    // console.log('fetching');
+    console.log('fetching');
     await fetch("/subscribe", {
         method: "POST",
         body: JSON.stringify({subscription,"Site":`subscribe`}),
