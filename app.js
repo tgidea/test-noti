@@ -39,19 +39,19 @@ function run(){
         webpush.sendNotification(articles[i], payload).catch(err=> console.error(err));
     }
 }
-async function runThis(text){
-    const list=await Schema.find();
-    for(var i=0;i<list.length;i++){
-        const data2 = JSON.parse(list[i].subscripton);
-        const payload = JSON.stringify({title: `${text}` });
-        webpush.sendNotification(data2, payload).catch(err=> console.error(err));
-    }
-}
-app.get('/notify/:data',(req,res)=>{
-    const data=req.params.data;
-    runThis(data);
-    return res.status(200).json();
-})
+// async function runThis(text){
+//     const list=await Schema.find();
+//     for(var i=0;i<list.length;i++){
+//         const data2 = JSON.parse(list[i].subscripton);
+//         const payload = JSON.stringify({title: `${text}` });
+//         webpush.sendNotification(data2, payload).catch(err=> console.error(err));
+//     }
+// }
+// app.get('/notify/:data',(req,res)=>{
+//     const data=req.params.data;
+//     runThis(data);
+//     return res.status(200).json();
+// })
 
 const port=process.env.PORT || 5001;
 app.listen(port,()=>console.log('Server started'));
