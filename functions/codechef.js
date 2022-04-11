@@ -3,6 +3,8 @@ const fs = require('fs');
 const Subscribed = require('../schema');
 const mongoose = require('mongoose');
 const webpush = require('web-push');
+const timeOutFunction = require('../functions/sendFunction');
+
 const findDate = function (str) {
     if (str[0] == '0') {
         return parseInt(`${str[1]}`);
@@ -47,38 +49,15 @@ const codechefNotification = async () => {
 
                     let finalResult = notifyMiliSecond - Date.now();
 
-                    if (findDate(data[k].day.toString()) == d.getDate() && finalResult >= (-300000) && finalResult <= 1810000) {
+                    if (findDate(data[k].day.toString()) == d.getDate() && finalResult >= 0 && finalResult <= 610000) {
                         console.log('here in codchef');
                         const result = await Subscribed.find();
-                        finalResult = finalResult - 600000;
-                        if (finalResult < 0) { finalResult = 2000 };
-                        console.log('in  codechef: ', finalResult);
-                        const timeOutFunction = (result, title) => {
-                            setTimeout(async () => {
-                                try {
-                                    for (var i = 0; i < result.length; i++) {
-                                        try {
-                                            const data2 = JSON.parse(result[i].subscripton);
-                                            const payload = JSON.stringify({ title: `${title}` });
-                                            const output = await webpush.sendNotification(data2, payload);
-                                            if (output) {
-                                                console.log(output);
-                                            }
-                                            else {
-                                                console.log('Erro in sending msg');
-                                            }
-                                        }
-                                        catch (err) {
-                                            console.log(err);
-                                        }
-                                    }
-                                }
-                                catch (err) {
-                                    console.log(err);
-                                }
-                            }, finalResult);
-                        }
-                        timeOutFunction(result, data[k].name);
+
+                        // setTimeout(async () => {
+                            console.log('calling timeout fucniton');
+                            timeOutFunction(result, data[k].name);
+                        // }, finalResult);
+
                     }
                 }
             }

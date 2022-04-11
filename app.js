@@ -65,13 +65,13 @@ const callingFun = async ()=> {
 function timeToAlert() {
     console.log('in time to alert');
     codechefNotification();
-    codeforcesNotification();
+    // codeforcesNotification();
 }
 
 timeToAlert();
 setInterval(function () {
     timeToAlert();
-},3600000);
+},600000);
 
 
 const port=process.env.PORT || 5001;
