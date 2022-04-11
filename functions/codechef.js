@@ -44,11 +44,11 @@ const codechefNotification = async () => {
                     const d = new Date();
                     const preTime = `${d.getMonth() + 1}/${d.getDate()}/${d.getFullYear()} ${ist}`;
                     const notifyTime = new Date(preTime);
-
+                    console.log(preTime);
                     const notifyMiliSecond = notifyTime.getTime();
 
                     let finalResult = notifyMiliSecond - Date.now();
-
+                    console.log( findDate(data[k].day.toString()) , finalResult);
                     if (findDate(data[k].day.toString()) == d.getDate() && finalResult >= 0 && finalResult <= 610000) {
                         console.log('here in codchef');
                         const result = await Subscribed.find();
