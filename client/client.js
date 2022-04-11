@@ -23,7 +23,7 @@ pushButton.addEventListener('click', function () {
         sended()
             .catch((err) => {
                 pushButton.disabled = false;
-                alert(`Please click again. There may be some issue and Please ensure google push service is active if you are using brave`);
+                alert(`Please click again.`);
                 console.log(err);
             });
     }
@@ -64,6 +64,7 @@ async function sended() {
         }
         catch (err) {
             console.log(err);
+            alert(`Please click again.          Please ensure google push service is active if you are using brave browser`);
         }
     }
 }
