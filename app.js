@@ -25,10 +25,29 @@ app.get('/', (req, res) => {
 })
 app.post('/subscribe', (req, res) => {
     const subscription = req.body.subscription;
-    const name = req.body.name;
+    const name = req.body.name.toString().toLowerCase().trim();
     res.status(201).json({})
     if (name.length > 0) {
         SchemaModel(`${name}`, JSON.stringify(subscription));
+    }
+})
+
+app.post('/unsubscribe', async (req, res) => {
+    const name = req.body.name.toString().toLowerCase().trim();
+    if (name.length > 0) {
+        try {
+            const deleted = await Schema.deleteOne({ "client": `${name}` });
+            if(deleted.deletedCount>0){
+                res.status(200).send({"result":"success"})
+            }
+            else{
+                res.status(400).send({"result":"unsuccess"})
+            }
+        }
+        catch (err) {
+            console.log(err);
+            res.send({ "result": "Some error occured" });
+        }
     }
 })
 
@@ -36,7 +55,7 @@ async function runThis(text) {
     const list = await Schema.find();
     for (var i = 0; i < list.length; i++) {
         const data2 = JSON.parse(list[i].subscripton);
-        const payload = JSON.stringify({ title: `${text}`,image:"https://thumbs.dreamstime.com/b/business-woman-sending-sms-email-marketing-business-woman-sending-sms-email-marketing-using-mobile-phone-118223999.jpg" });
+        const payload = JSON.stringify({ title: `${text}`, image: "https://thumbs.dreamstime.com/b/business-woman-sending-sms-email-marketing-business-woman-sending-sms-email-marketing-using-mobile-phone-118223999.jpg" });
         webpush.sendNotification(data2, payload).catch(err => console.error(err));
     }
 }
