@@ -3,8 +3,7 @@ const fs = require('fs');
 const Subscribed = require('../schema');
 const mongoose = require('mongoose');
 const webpush = require('web-push');
-const timeOutFunction=require('../functions/sendFunction');
-
+const timeOutFunction = require('../functions/sendFunction');
 
 
 const findDate = function (str) {
@@ -69,42 +68,18 @@ const codeforcesNotification = async () => {
                     const notifyTime = new Date(preTime);
                     const notifyMiliSecond = notifyTime.getTime();
                     let finalResult = notifyMiliSecond - Date.now();
-                    // console.log(finalResult);
-                    if (finalResult == NaN) {
-                        finalResult = 2000000;
-                    }
-                    if (findDate(time.toString()) == d.getDate() && finalResult >= (-300000) && finalResult <= 1810000) {
+                    //As heroku server in US so new Date convert according to US zone;
+                    finalResult=finalResult-19825208;
+                    console.log(finalResult,findDate(time.toString()));
+                    if (findDate(time.toString()) == d.getDate() && finalResult >= (0) && finalResult <= 610000) {
                         console.log('here in codforces');
                         const result = await Subscribed.find();
-                        finalResult = finalResult - 600000;
-                        if (finalResult < 0) { finalResult = 2000 };
-                        console.log('in ...', finalResult);
-                        const timeOutFunction = (result, title) => {
-                            setTimeout(async () => {
-                                try {
-                                    for (var i = 0; i < result.length; i++) {
-                                        const data2 = JSON.parse(result[i].subscripton);
-                                        const payload = JSON.stringify({ title: `${title}` });
-                                        try {
-                                            const output = await webpush.sendNotification(data2, payload);
-                                            if (output) {
-                                                console.log(output);
-                                            }
-                                            else {
-                                                console.log('Erro in sending msg');
-                                            }
-                                        }
-                                        catch (err) {
-                                            console.log(`error in sending ${i}`);
-                                        }
-                                    }
-                                }
-                                catch (err) {
-                                    console.log(err);
-                                }
-                            }, finalResult);
-                        }
-                        timeOutFunction(result, data[k].name);
+                        
+                        console.log('calling timeout fucniton codeforces');
+                        // setTimeout(async () => {
+                            timeOutFunction(result, data[k].name);
+                        // }, finalResult);
+
                     }
                 }
             }

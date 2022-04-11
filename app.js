@@ -65,7 +65,7 @@ const callingFun = async ()=> {
 function timeToAlert() {
     console.log('in time to alert');
     codechefNotification();
-    // codeforcesNotification();
+    codeforcesNotification();
 }
 
 timeToAlert();
