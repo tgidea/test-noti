@@ -60,7 +60,7 @@ const callingFun = async ()=> {
         console.log(err);
     }
 }
-// callingFun();
+callingFun();
 
 function timeToAlert() {
     console.log('in time to alert');
