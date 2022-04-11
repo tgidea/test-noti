@@ -18,7 +18,7 @@ function urlBase64ToUint8Array(base64String) {
     return outputArray;
 }
 pushButton.addEventListener('click', function () {
-    pushButton.disabled = true;
+    // pushButton.disabled = true;
     if ('serviceWorker' in navigator) {
         sended()
             .catch((err) => {
@@ -56,10 +56,11 @@ async function sended() {
                         "content-type": "application/json"
                     }
                 });
-                if (pushButton.disabled == true) {
+                // if (pushButton.disabled == true) {
+                    pushButton.disabled == true
                     localStorage.setItem("subscribed", true);
                     alert('Successfully Subscribed');
-                }
+                // }
             }
         }
         catch (err) {
