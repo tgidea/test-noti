@@ -49,6 +49,10 @@ const codechefNotification = async () => {
 
                     let finalResult = notifyMiliSecond - Date.now();
                     console.log( findDate(data[k].day.toString()) , finalResult);
+
+                    //As heroku server in US so new Date convert according to US zone;
+                    finalResult=finalResult-19825208;
+                    console.log('FInal is ',finalResult);
                     if (findDate(data[k].day.toString()) == d.getDate() && finalResult >= 0 && finalResult <= 610000) {
                         console.log('here in codchef');
                         const result = await Subscribed.find();
