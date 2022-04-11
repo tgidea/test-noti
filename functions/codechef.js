@@ -44,7 +44,7 @@ const codechefNotification = async () => {
                     const d = new Date();
                     const preTime = `${d.getMonth() + 1}/${d.getDate()}/${d.getFullYear()} ${ist}`;
                     const notifyTime = new Date(preTime);
-                    console.log(preTime);
+                    console.log(preTime,notifyTime);
                     const notifyMiliSecond = notifyTime.getTime();
 
                     let finalResult = notifyMiliSecond - Date.now();
