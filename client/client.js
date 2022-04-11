@@ -31,7 +31,7 @@ pushButton.addEventListener('click', function () {
 
 async function sended() {
     //register service worker
-    if (isSubscribed == 'true' && confirm('Do you want to subscribe again?')) {
+    if (isSubscribed==null || isSubscribed==undefined || isSubscribed==NaN || (  confirm('Do you want to subscribe again?'))  ) {
         try {
             const register = await navigator.serviceWorker.register('/worker.js', {
                 scope: '/'
