@@ -1,13 +1,13 @@
 const express = require('express');
 const webpush = require('web-push');
 const bodyParser = require('body-parser');
-const path= require('path');
+const path = require('path');
 const app = express();
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname,"client")));
-const Schema=require('./schema');
-const SchemaModel=require('./schemaModel');
-const conn=require('./connection');
+app.use(express.static(path.join(__dirname, "client")));
+const Schema = require('./schema');
+const SchemaModel = require('./schemaModel');
+const conn = require('./connection');
 const atCoderDataUpdate = require('./dataUpdate/atcoder');
 const codechefDataUpdate = require('./dataUpdate/codechef');
 const codeforcesDataUpdate = require('./dataUpdate/codeforces');
@@ -16,36 +16,45 @@ const codechefNotification = require('./functions/codechef');
 
 require('dotenv').config({ path: __dirname + '/config.env' });
 const private_keys = process.env.PRIVATE_KEY;
-const public_keys='BIVj4YrGKo27YGVRf4oGmWEuQmKP3RU4-hpqYgiOA1euhIxTGww0tRira53W00qOunrM_6jimqHlKL3eKLZ2GQo';
-  
-webpush.setVapidDetails('mailto:gyanexplode@gmail.com', public_keys,private_keys);
+const public_keys = 'BIVj4YrGKo27YGVRf4oGmWEuQmKP3RU4-hpqYgiOA1euhIxTGww0tRira53W00qOunrM_6jimqHlKL3eKLZ2GQo';
 
-app.get('/',(req,res)=>{
-    res.sendFile(path.join(__dirname,'client/index.html'))
+webpush.setVapidDetails('mailto:gyanexplode@gmail.com', public_keys, private_keys);
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'client/index.html'))
 })
-app.post('/subscribe', (req, res)=>{
+app.post('/subscribe', (req, res) => {
     const subscription = req.body.subscription;
+    const name = req.body.name;
     res.status(201).json({})
-    const payload = JSON.stringify({title: 'first Push Notification learning by me' });
-    SchemaModel('name', JSON.stringify(subscription));
+    if (name.length > 0) {
+        SchemaModel(`${name}`, JSON.stringify(subscription));
+    }
 })
 
-async function runThis(text){
-    const list=await Schema.find();
-    for(var i=0;i<list.length;i++){
+async function runThis(text) {
+    const list = await Schema.find();
+    for (var i = 0; i < list.length; i++) {
         const data2 = JSON.parse(list[i].subscripton);
-        const payload = JSON.stringify({title: `${text}` });
-        webpush.sendNotification(data2, payload).catch(err=> console.error(err));
+        const payload = JSON.stringify({ title: `${text}`,image:"https://thumbs.dreamstime.com/b/business-woman-sending-sms-email-marketing-business-woman-sending-sms-email-marketing-using-mobile-phone-118223999.jpg" });
+        webpush.sendNotification(data2, payload).catch(err => console.error(err));
     }
 }
-app.get('/notify/:data',(req,res)=>{
-    const data=req.params.data;
-    runThis(data);
-    return res.status(200).json();
+let prevTime = 0;
+app.get('/notify/:data', (req, res) => {
+    const data = req.params.data;
+    if (Date.now() - prevTime > 10000) {
+        prevTime = Date.now();
+        runThis(data);
+        res.send('Send successfully');
+    }
+    else {
+        res.send(`please try after ${(Date.now() - prevTime) / 1000} seconds`);
+    }
 })
 
 //Calling json file creater function
-const callingFun = async ()=> {
+const callingFun = async () => {
     try {
         atCoderDataUpdate();
         codechefDataUpdate();
@@ -60,19 +69,21 @@ const callingFun = async ()=> {
         console.log(err);
     }
 }
+
 callingFun();
+
 
 function timeToAlert() {
     console.log('in time to alert');
-    codechefNotification();
     codeforcesNotification();
+    codechefNotification();
 }
 
 timeToAlert();
 setInterval(function () {
     timeToAlert();
-},600000);
+}, 600000);
 
 
-const port=process.env.PORT || 5001;
-app.listen(port,()=>console.log('Server started'));
+const port = process.env.PORT || 5001;
+app.listen(port, () => console.log('Server started'));

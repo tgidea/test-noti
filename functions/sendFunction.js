@@ -1,6 +1,7 @@
 const Subscribed = require('../schema');
 const mongoose = require('mongoose');
 const webpush = require('web-push');
+const image='https://t3.ftcdn.net/jpg/03/43/43/72/360_F_343437244_HrxIVZWbfh29tgxuRlxbPXEpHMSmfkAn.jpg';
 
 const timeOutFunction = async(result, title) => {
         try {
@@ -8,7 +9,7 @@ const timeOutFunction = async(result, title) => {
                 console.log('Sending notification...in timeout function');
                 try {
                     const data2 = JSON.parse(result[i].subscripton);
-                    const payload = JSON.stringify({ title: `${title}` });
+                    const payload = JSON.stringify({ title: `${title}`,image });
                     const output = await webpush.sendNotification(data2, payload);
                     if (output) {
                         console.log(output);

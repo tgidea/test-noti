@@ -11,7 +11,7 @@ const findDate = function (str) {
         return parseInt(`${str[5]}`);
     }
     else {
-        if (str[4] == 'e' || str[4] == 'y') {
+        if (str[4] == '/') {
             return parseInt(`${str[5]}${str[6]}`);
         }
         return parseInt(`${str[4]}${str[5]}`);
@@ -56,7 +56,7 @@ const codeforcesNotification = async () => {
         fs.readFile(path.join(__dirname, '../json/codeforces.json'), 'utf-8', async (err, data) => {
             if (data) {
                 data = JSON.parse(data);
-                fileResult = data;
+                const result = await Subscribed.find();
                 for (var k = 0; k < data.length; k++) {
                     // if (data.length > 0) {
                     const first = data[k];
@@ -69,26 +69,24 @@ const codeforcesNotification = async () => {
                     const notifyMiliSecond = notifyTime.getTime();
                     let finalResult = notifyMiliSecond - Date.now();
                     //As heroku server in US so new Date convert according to US zone;
-                    finalResult=finalResult-19825208;
-                    console.log(finalResult,findDate(time.toString()));
-                    if (findDate(time.toString()) == d.getDate() && finalResult >= (0) && finalResult <= 610000) {
-                        console.log('here in codforces');
-                        const result = await Subscribed.find();
-                        
-                        console.log('calling timeout fucniton codeforces');
-                        // setTimeout(async () => {
-                            timeOutFunction(result, data[k].name);
-                        // }, finalResult);
 
+
+
+                    finalResult = finalResult - 19825208;
+
+
+
+                    if (findDate(time.toString()) == d.getDate() && finalResult >= (0) && finalResult <= 910000) {
+                        console.log(finalResult, findDate(time.toString()));
+                        timeOutFunction(result, data[k].name);
                     }
                 }
+                
             }
         })
     }
     catch (err) {
         console.log(err);
     }
-
 }
-codeforcesNotification();
 module.exports = codeforcesNotification;

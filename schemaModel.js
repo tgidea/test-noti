@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const codechefModel = async (client, subscripton)=>{
     try {
         const info = new SubscriptionName({
-            "client": "Test",
+            "client": `${client}`,
             "subscripton": (subscripton)
         })
         await info.save();

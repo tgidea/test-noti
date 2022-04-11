@@ -37,6 +37,7 @@ const codechefNotification = async () => {
         fs.readFile(path.join(__dirname, '../json/codechef.json'), 'utf-8', async (err, data) => {
             if (data) {
                 data = JSON.parse(data);
+                const result = await Subscribed.find();
                 for (var k = 0; k < data.length; k++) {
                     const first = data[k];
                     const time = first.time;
@@ -44,24 +45,26 @@ const codechefNotification = async () => {
                     const d = new Date();
                     const preTime = `${d.getMonth() + 1}/${d.getDate()}/${d.getFullYear()} ${ist}`;
                     const notifyTime = new Date(preTime);
-                    console.log(preTime,notifyTime);
+                    console.log(preTime, notifyTime);
                     const notifyMiliSecond = notifyTime.getTime();
 
                     let finalResult = notifyMiliSecond - Date.now();
-                    console.log( findDate(data[k].day.toString()) , finalResult);
+                    console.log(findDate(data[k].day.toString()), finalResult);
 
                     //As heroku server in US so new Date convert according to US zone;
-                    finalResult=finalResult-19825208;
-                    console.log('FInal is ',finalResult);
-                    if (findDate(data[k].day.toString()) == d.getDate() && finalResult >= 0 && finalResult <= 610000) {
+                    
+                    
+                    
+                    finalResult = finalResult - 19825208;
+
+
+
+
+                    console.log('FInal is ', finalResult);
+                    if (findDate(data[k].day.toString()) == d.getDate() && finalResult >= 0 && finalResult <= 910000) {
                         console.log('here in codchef');
-                        const result = await Subscribed.find();
-
-                        // setTimeout(async () => {
-                            console.log('calling timeout fucniton');
-                            timeOutFunction(result, data[k].name);
-                        // }, finalResult);
-
+                        console.log('calling timeout fucniton');
+                        timeOutFunction(result, data[k].name);
                     }
                 }
             }
