@@ -26,9 +26,13 @@ app.get('/', (req, res) => {
 app.post('/subscribe', (req, res) => {
     const subscription = req.body.subscription;
     const name = req.body.name.toString().toLowerCase().trim();
-    res.status(201).json({})
+    
     if (name.length > 0) {
         SchemaModel(`${name}`, JSON.stringify(subscription));
+        res.status(200).json({ "result": "success" });
+    }
+    else {
+        res.status(400).json({ "result": "unsuccess" });
     }
 })
 
@@ -37,11 +41,11 @@ app.post('/unsubscribe', async (req, res) => {
     if (name.length > 0) {
         try {
             const deleted = await Schema.deleteOne({ "client": `${name}` });
-            if(deleted.deletedCount>0){
-                res.status(200).send({"result":"success"})
+            if (deleted.deletedCount > 0) {
+                res.status(200).send({ "result": "success" })
             }
-            else{
-                res.status(400).send({"result":"unsuccess"})
+            else {
+                res.status(400).send({ "result": "unsuccess" })
             }
         }
         catch (err) {

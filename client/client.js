@@ -18,9 +18,11 @@ function urlBase64ToUint8Array(base64String) {
     }
     return outputArray;
 }
+const namee = [];
 pushButton.addEventListener('click', function () {
     // pushButton.disabled = true;
     if ('serviceWorker' in navigator) {
+        namee.push(prompt('Enter a unique name using alphanumeric keys'));
         sended()
             .catch((err) => {
                 pushButton.disabled = false;
@@ -29,36 +31,47 @@ pushButton.addEventListener('click', function () {
             });
     }
 })
-
+let count = 0;
 async function sended() {
     //register service worker
-    if (isSubscribed == null || isSubscribed == undefined || isSubscribed == NaN || (confirm('Do you want to subscribe again?'))) {
+    if (isSubscribed == null || isSubscribed == undefined || isSubscribed == NaN || isSubscribed == 'false' || (confirm('Do you want to subscribe again?'))) {
         try {
             const register = await navigator.serviceWorker.register('/worker.js', {
                 scope: '/'
-            });         
+            });
             //register push
             const subscription = await register.pushManager.subscribe({
                 userVisibleOnly: true,
                 //public vapid key
                 applicationServerKey: urlBase64ToUint8Array(public_keys)
             });
-            const name = prompt('Enter a unique name using alphanumeric keys');
-            if (name.length > 2) {
-                await fetch("/subscribe", {
+            if (namee[(namee.length) - 1].length > 2) {
+                const out=await fetch("/subscribe", {
                     method: "POST",
-                    body: JSON.stringify({ subscription, "name": `${name}` }),
+                    body: JSON.stringify({ subscription, "name": `${namee[(namee.length) - 1]}` }),
                     headers: {
                         "content-type": "application/json"
                     }
                 });
                 pushButton.disabled == true
                 localStorage.setItem("subscribed", true);
-                alert('Successfully Subscribed');                
+                if(out.status==200){
+                    alert('Successfully Subscribed');
+                }
+                else{
+                    alert('Subscription failed due to some error');
+                }
             }
         }
         catch (err) {
-            alert(`Please click again. Please ensure google push service is active if you are using brave browser`);
+            if (count == 0) {
+                count++;
+                console.log('trying again');
+                await sended();
+            }
+            else {
+                alert(`Please click again. Please ensure google push service is active if you are using brave browser`);
+            }
         }
     }
 }
@@ -76,6 +89,7 @@ async function unsubscribe() {
             });
 
             if (outputt.status == 200) {
+                localStorage.setItem('subscribed', 'false');
                 alert('Successfull cancelled the subscription connected with this name.');
             }
             else {
