@@ -7,7 +7,20 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-VP9091QPFN"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
+      gtag("config", "G-VP9091QPFN");
+    </script>
     <!-- Bootstrap CSS -->
     <link
       rel="stylesheet"
@@ -16,7 +29,7 @@
       crossorigin="anonymous"
     />
     <style>
-            /*
+      /*
        * Globals
        */
 
@@ -37,7 +50,6 @@
         border: 1px solid #fff;
       }
 
-
       /*
        * Base structure
        */
@@ -50,7 +62,7 @@
       body {
         color: #fff;
         text-align: center;
-        text-shadow: 0 1px 3px rgba(0,0,0,.5);
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
       }
 
       /* Extra markup and styles for table-esque vertical and horizontal centering */
@@ -76,7 +88,6 @@
         padding: 30px;
       }
 
-
       /*
        * Header
        */
@@ -97,14 +108,14 @@
         font-size: 16px;
         font-weight: bold;
         color: #fff; /* IE8 proofing */
-        color: rgba(255,255,255,.75);
+        color: rgba(255, 255, 255, 0.75);
         border-bottom: 2px solid transparent;
       }
       .masthead-nav > li > a:hover,
       .masthead-nav > li > a:focus {
         background-color: transparent;
         border-bottom-color: #a9a9a9;
-        border-bottom-color: rgba(255,255,255,.25);
+        border-bottom-color: rgba(255, 255, 255, 0.25);
       }
       .masthead-nav > .active > a,
       .masthead-nav > .active > a:hover,
@@ -121,7 +132,6 @@
           float: right;
         }
       }
-
 
       /*
        * Cover
@@ -160,20 +170,35 @@
           <div class="masthead clearfix">
             <div class="container inner">
               <h3 class="masthead-brand">My Updates</h3>
+              <nav>
+                <ul class="nav masthead-nav">
+                  <li class="active"><a href="#">Home</a></li>
+                  <li><a href="https://mycollegeupdates.herokuapp.com">Explore Future Contest</a></li>
+                  <li><a href="mailto:gyanexplode@gmail.com">Contact</a></li>
+                </ul>
+              </nav>
             </div>
           </div>
 
           <div class="inner cover">
             <h1 class="cover-heading">Subscribe to get notification</h1>
             <p class="lead">
-             My Updates is a web app which give notification about upcoming contest before 5-15 min so that no enthusiast miss any contest.
+              My Updates is a web app which give notification about upcoming
+              contest before 5-15 min so that no enthusiast miss any contest.
             </p>
             <p class="lead">
-              <button id="codechef" class="btn btn-primary btn-lg border-0 w-100">
+              <button
+                id="codechef"
+                class="btn btn-primary btn-lg border-0 w-100"
+              >
                 Subscribe Now
               </button>
-              <br>
-              <button id="unsubscribe" style="margin-top: 10px;" class="btn btn-primary btn-lg border-0 w-100">
+              <br />
+              <button
+                id="unsubscribe"
+                style="margin-top: 10px"
+                class="btn btn-primary btn-lg border-0 w-100"
+              >
                 Unsubscribe
               </button>
             </p>
@@ -181,7 +206,7 @@
         </div>
       </div>
     </div>
-    
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="client.js"></script>
