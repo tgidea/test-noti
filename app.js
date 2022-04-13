@@ -8,6 +8,7 @@ app.use(express.static(path.join(__dirname, "client")));
 const Schema = require('./schema');
 const SchemaModel = require('./schemaModel');
 const conn = require('./connection');
+const axios = require('axios');
 const atCoderDataUpdate = require('./dataUpdate/atcoder');
 const codechefDataUpdate = require('./dataUpdate/codechef');
 const codeforcesDataUpdate = require('./dataUpdate/codeforces');
@@ -26,7 +27,7 @@ app.get('/', (req, res) => {
 app.post('/subscribe', (req, res) => {
     const subscription = req.body.subscription;
     const name = req.body.name.toString().toLowerCase().trim();
-    
+
     if (name.length > 0) {
         SchemaModel(`${name}`, JSON.stringify(subscription));
         res.status(200).json({ "result": "success" });
@@ -79,10 +80,22 @@ app.get('/notify/:data', (req, res) => {
 //Calling json file creater function
 const callingFun = async () => {
     try {
+        try {
+            await axios('https://myupdates.herokuapp.com/');
+        }
+        catch (err) {
+            console.log(err);
+        }
         atCoderDataUpdate();
         codechefDataUpdate();
         codeforcesDataUpdate();
-        setInterval(function () {
+        setInterval(async () => {
+            try {
+                await axios('https://myupdates.herokuapp.com/');
+            }
+            catch (err) {
+                console.log(err);
+            }
             atCoderDataUpdate();
             codechefDataUpdate();
             codeforcesDataUpdate();

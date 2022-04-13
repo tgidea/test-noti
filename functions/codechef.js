@@ -61,7 +61,7 @@ const codechefNotification = async () => {
 
 
                     console.log('FInal is ', finalResult);
-                    if (findDate(data[k].day.toString()) == d.getDate() && finalResult >= 0 && finalResult <= 910000) {
+                    if (findDate(data[k].day.toString()) == d.getDate() && finalResult >= (-60000) && finalResult <= 910000) {
                         console.log('here in codchef');
                         console.log('calling timeout fucniton');
                         timeOutFunction(result, data[k].name);
