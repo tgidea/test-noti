@@ -116,7 +116,16 @@ function timeToAlert() {
     codechefNotification();
 }
 
-
+app.get('/check01',async(req,res)=>{
+    try{
+        timeToAlert();
+        res.send("okkkk");
+    }
+    catch(err){
+        res.send("error");
+        console.log(err);
+    }
+})
 const alertFun=function(){
     console.log('alert fun activate');
     timeToAlert();
