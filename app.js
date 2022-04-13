@@ -90,6 +90,7 @@ const callingFun = async () => {
         codechefDataUpdate();
         codeforcesDataUpdate();
         setInterval(async () => {
+            console.log('Update function');
             try {
                 await axios('https://myupdates.herokuapp.com/');
             }
@@ -115,10 +116,16 @@ function timeToAlert() {
     codechefNotification();
 }
 
-timeToAlert();
-setInterval(function () {
+
+const alertFun=function(){
+    console.log('alert fun activate');
     timeToAlert();
-}, 600000);
+    setTimeout(function(){
+        console.log('setTimeout complete');
+        alertFun();
+    },600000)
+}
+alertFun();
 
 
 const port = process.env.PORT || 5001;
