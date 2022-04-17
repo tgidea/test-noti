@@ -101,6 +101,15 @@ const callingFun = async () => {
             codechefDataUpdate();
             codeforcesDataUpdate();
         }, 180000)
+        setInterval(async () => {
+            console.log('Update function');
+            try {
+                console.log(await axios('https://myupdates.herokuapp.com/check01/'));
+            }
+            catch (err) {
+                console.log(err);
+            }
+        }, 550000)
     }
     catch (err) {
         console.log(err);
