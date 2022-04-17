@@ -76,7 +76,7 @@ const codeforcesNotification = async () => {
 
 
 
-                    if (findDate(time.toString()) == d.getDate() && finalResult >= (-60000) && finalResult <= 910000) {
+                    if (findDate(time.toString()) == d.getDate() && ((finalResult >= (-60000) && finalResult <= 910000) || (finalResult>=1800000 && finalResult<=2410000) )) {
                         console.log(finalResult, findDate(time.toString()));
                         timeOutFunction(result, data[k].name);
                     }

@@ -1,11 +1,5 @@
 [
   {
-    "name": "UNIQUE VISION Programming Contest 2022（AtCoder Beginner Contest 248）",
-    "nameLink": "https://atcoder.jp/contests/abc248",
-    "time": "2022-04-16 21:00:00+0900",
-    "timeLink": "http://www.timeanddate.com/worldclock/fixedtime.html?iso=20220416T2100&p1=248"
-  },
-  {
     "name": "Monoxer Programming Contest 2022（AtCoder Beginner Contest 249）",
     "nameLink": "https://atcoder.jp/contests/abc249",
     "time": "2022-04-23 21:00:00+0900",
@@ -28,5 +22,11 @@
     "nameLink": "https://atcoder.jp/contests/agc057",
     "time": "2022-05-07 21:00:00+0900",
     "timeLink": "http://www.timeanddate.com/worldclock/fixedtime.html?iso=20220507T2100&p1=248"
+  },
+  {
+    "name": "AtCoder Beginner Contest 250",
+    "nameLink": "https://atcoder.jp/contests/abc250",
+    "time": "2022-05-08 21:00:00+0900",
+    "timeLink": "http://www.timeanddate.com/worldclock/fixedtime.html?iso=20220508T2100&p1=248"
   }
 ]

@@ -81,7 +81,7 @@ app.get('/notify/:data', (req, res) => {
 const callingFun = async () => {
     try {
         try {
-            await axios('https://myupdates.herokuapp.com/');
+            await axios('https://myupdates.herokuapp.com/check01/');
         }
         catch (err) {
             console.log(err);
@@ -92,7 +92,7 @@ const callingFun = async () => {
         setInterval(async () => {
             console.log('Update function');
             try {
-                await axios('https://myupdates.herokuapp.com/');
+                await axios('https://myupdates.herokuapp.com/check01/');
             }
             catch (err) {
                 console.log(err);
