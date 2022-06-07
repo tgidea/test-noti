@@ -5,8 +5,8 @@ const path = require('path');
 const app = express();
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, "client")));
-const Schema = require('./schema');
-const SchemaModel = require('./schemaModel');
+const Schema = require('./schema/schema');
+const SchemaModel = require('./schema/schemaModel');
 const conn = require('./connection');
 const axios = require('axios');
 const atCoderDataUpdate = require('./dataUpdate/atcoder');
@@ -65,7 +65,7 @@ async function runThis(text) {
     }
 }
 let prevTime = 0;
-app.get('/notify/:data', (req, res) => {
+app.get('/notify01/:data', (req, res) => {
     const data = req.params.data;
     if (Date.now() - prevTime > 10000) {
         prevTime = Date.now();
@@ -84,7 +84,7 @@ const callingFun = async () => {
             await axios('https://myupdates.herokuapp.com/check01/');
         }
         catch (err) {
-            console.log(err);
+            // console.log('Cannot call myupdate');
         }
         atCoderDataUpdate();
         codechefDataUpdate();

@@ -1,6 +1,6 @@
 const path = require('path');
 const fs = require('fs');
-const Subscribed = require('../schema');
+const Subscribed = require('../schema/schema');
 const mongoose = require('mongoose');
 const webpush = require('web-push');
 const timeOutFunction = require('../functions/sendFunction');

@@ -65,7 +65,7 @@ async function sended() {
         }
         catch (err) {
             if (count == 0) {
-                count++;
+                count=1;
                 console.log('trying again');
                 await sended();
             }

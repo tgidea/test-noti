@@ -1,4 +1,4 @@
-const Subscribed = require('../schema');
+const Subscribed = require('../schema/schema');
 const mongoose = require('mongoose');
 const webpush = require('web-push');
 const image='https://t3.ftcdn.net/jpg/03/43/43/72/360_F_343437244_HrxIVZWbfh29tgxuRlxbPXEpHMSmfkAn.jpg';
