@@ -76,28 +76,7 @@
       .navbar-default .navbar-toggle {
         border-color: transparent;
         color: #fff !important;
-      }
-
-      @keyframes slide {
-        0% {
-          opacity: 0;
-          transform: translateY(70%);
-        }
-        100% {
-          opacity: 1;
-          transform: translateY(0%);
-        }
-      }
-      @-webkit-keyframes slide {
-        0% {
-          opacity: 0;
-          -webkit-transform: translateY(70%);
-        }
-        100% {
-          opacity: 1;
-          -webkit-transform: translateY(0%);
-        }
-      }
+      }     
     </style>
     <title>Service</title>
   </head>
@@ -114,59 +93,29 @@
         </ul>
       </div>
     </nav>
-
-    <section class="vh-100" style="background-color: #fda185">
-      <div class="container h-100">
-        <div class="row d-flex justify-content-center align-items-center h-100">
-          <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-            <div class="card shadow-2-strong" style="border-radius: 1rem">
-              <div class="card-body p-5 text-center">
-                <form id="notification_request">
-                  <h3 class="mb-5" style="color: #f4511e">Create Channel</h3>
-                  <div class="form-outline mb-4">
-                    <input
-                      type="text"
-                      id="channel"
-                      class="form-control form-control-lg"
-                    />
-                    <label
-                      style="color: #f4511e"
-                      class="form-label"
-                      for="channel"
-                      >Channel</label
-                    >
-                  </div>
-                  <div class="form-outline mb-4">
-                    <input
-                      type="password"
-                      id="password"
-                      class="form-control form-control-lg"
-                    />
-                    <label
-                      style="color: #f4511e"
-                      class="form-label"
-                      for="password"
-                      >Password</label
-                    >
-                  </div>
-                  <div id="alert_msg"></div>
-                  <button
-                    style="background-color: #f4511e; color: white"
-                    class="btn btn-lg btn-block"
-                    type="submit"
-                  >
-                    Create
-                  </button>
-                </form>
-
-                <a href="service.html" style="color: blue">Send Notification</a>
-              </div>
-            </div>
-          </div>
+    <section>
+        <div id="main">
+            <h3 style="margin-top:30px;">How to avail benefit of our free service.</h3>
+            <ul>                
+                <li>Create a channel for your consumer/views : <a href="/service_create.html">Click here.</a></li>
+                <li>Share your channel and ask to subscribe.</li>
+                <li>That's all ! Connect with your consumer/viewers 24x7. <a href="/subscribe.html">Click here.</a></li>
+                <br>
+                <li>If you want to avail benefit of our contest service : Go to <a href="/subscribe.html">subscribe </a> page. </li>
+                <li>Type channel : <a href="#">contest</a>. </li>
+                <li>That's all ! You may never miss a contest.</li>
+            </ul>
+            <h3 style="margin-top:30px;">Reason for not able to subscribe</h3>
+            <ul>                
+                <li>If you are using brave browser then make sure google push service is active.</li>
+                <li>Safari browser not support notification.</li>
+                <li>Allow browser to show notification.</li>
+                <li>Make sure you are connected to Internet.</li>
+                <li>Make sure the spelling of channel is correct.</li>
+                <li>Still not able to connect write us on <a href="mailto:1guptatushar@gmail.com">mail</a>.</li>
+            </ul>
         </div>
-      </div>
     </section>
-
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script>
@@ -177,24 +126,27 @@
         e.preventDefault();
         const channel = document.getElementById("channel");
         const password = document.getElementById("password");
+        const message = document.getElementById("message");
 
         if (
           channel.value.toString().length < 1 ||
-          password.value.toString().length < 1
+          password.value.toString().length < 1 ||
+          message.value.toString().length < 1
         ) {
-          alert_msg.innerHTML = "Please fill carefully";
+          alert_msg.innerText = "Please fill carefully";
           return;
         }
 
         try {
-          fetch("/create", {
+          fetch("/sendnoti", {
             method: "POST",
             headers: {
               "Content-type": "application/json",
             },
             body: JSON.stringify({
-              "channel": channel.value.toString(),
-              "password": password.value.toString(),
+              channel: channel.value.toString(),
+              password: password.value.toString(),
+              message: message.value.toString(),
             }),
           })
             .then(function (resp) {
@@ -202,12 +154,12 @@
               return resp.json();
             })
             .then(function (data) {
-              console.log(data);
-              alert_msg.innerHTML = data.result;
+                console.log(data);
+              alert_msg.innerText = data.result;
             });
         } catch (err) {
           console.log(err);
-          alert_msg.innerHTML = "There is some server error.";
+          alert_msg.innerText = "There is some server error.";
         }
       });
     </script>

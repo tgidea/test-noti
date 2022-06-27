@@ -46,8 +46,7 @@ const codeforcesupd = function () {
                                 var codePrevUpd = Date.now();
                                 articles.push({ name, time, duration, toStart, toRegister, link ,codePrevUpd});
                             }
-                        })
-                        console.log(articles);
+                        })                        
                     }
                     else {
                         return;

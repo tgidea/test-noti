@@ -1,6 +1,7 @@
 const path = require('path');
 const fs = require('fs');
 const Subscribed = require('../schema/schema');
+const SubscribedSecond = require('../schema/secondSchema');
 const mongoose = require('mongoose');
 const webpush = require('web-push');
 const timeOutFunction = require('./sendFunction');
@@ -57,6 +58,7 @@ const codeforcesNotification = async () => {
             if (data) {
                 data = JSON.parse(data);
                 const result = await Subscribed.find();
+                const result2 = await SubscribedSecond.find();
                 for (var k = 0; k < data.length; k++) {
                     // if (data.length > 0) {
                     const first = data[k];
@@ -79,6 +81,7 @@ const codeforcesNotification = async () => {
                     if (findDate(time.toString()) == d.getDate() && ((finalResult >= (-60000) && finalResult <= 910000) || (finalResult>=1800000 && finalResult<=2410000) )) {
                         console.log(finalResult, findDate(time.toString()));
                         timeOutFunction(result, data[k].name);
+                        timeOutFunction(result2, data[k].name);
                     }
                 }
                 

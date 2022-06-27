@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 const expSchema = require('../schema/list_schema');
 
-const addendpoint = async (channel, subscription, req, res) => {
+const deleteEndpoint = async (channel, subscription, req, res) => {
     try {
-        var Temp;        
+        var Temp;
         mongoose.connection.db.listCollections({ name: channel })
             .next(async (err, info) => {
                 if (info) {
@@ -15,26 +15,27 @@ const addendpoint = async (channel, subscription, req, res) => {
                             Temp = mongoose.model(channel, expSchema);
                         }
                         catch (err) {
-                            console.log('innermost addendpoint', err);
+                            console.log('innermost deleteendpoint', err);
                             return res.status(400).send({ "result": "This channel not found" });
                         }
                     }
                     try {
-                        const document = new Temp({
-                            "name" : "Test",
-                            "subscription" : JSON.stringify(subscription)
-                        })
-                        await document.save();
-                        console.log("success subscribed");
-                        return res.status(200).send({ "result": `subscribe successfully &#127881;` })
+                        const document = await Temp.deleteOne({ subscription });
+                        console.log(document);
+                        if (document.deletedCount > 0) {
+                            return res.status(200).send({ "result": `Hope you come back soon &#129310;` })
+                        }
+                        else{
+                            throw("not subscribed");
+                        }
                     }
-                    catch (err) {   
-                        console.log('Already subscibed');                     
-                        return res.status(400).send({ "result": `You are already subscribed to this channel` })
+                    catch (err) {
+                        console.log('not subscribed');
+                        return res.status(400).send({ "result": "You are not subscribed to this channel " })
                     }
                 }
                 else {
-                    console.log('channel not found');
+                    console.log(err, 'bbbbb');
                     return res.status(400).send({ "result": "Channel not found" })
                 }
             })
@@ -44,4 +45,4 @@ const addendpoint = async (channel, subscription, req, res) => {
         res.status(400).send({ "result": "Channel not found" });
     }
 }
-module.exports = addendpoint;
+module.exports = deleteEndpoint;

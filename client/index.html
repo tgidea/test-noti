@@ -226,7 +226,7 @@
         <li><a href="service.html">SERVICE</a></li>
       </ul>
     </div>
-    <ul id="phone" class="nav navbar-nav hide" style=" border-top: 2px solid white;">
+    <ul id="phone" class="nav navbar-nav hide" style=" border-top: 2px solid white;border-bottom: 2px solid white;">
       <li style="text-decoration: none ; margin-right : 15px;"><a style="text-decoration:none;" href="#about">HOME</a></li>
       <li style="text-decoration: none ; margin-right : 15px;"><a style="text-decoration:none;" href="#sites">SITES</a></li>
       <li style="text-decoration: none ; margin-right : 15px;"><a style="text-decoration:none;" href="#contact">CONTACT</a></li>
@@ -237,7 +237,7 @@
 
 <div id="about" class="jumbotron text-center">
   <h1>MyUpdates</h1> 
-  <p>We provide notification sending service besides give notification about upcoming coding contest.</p> 
+  <p>We provide notification sending service besides which help your customer to stay connected with you. Along this we notify you about upcoming coding contest.</p> 
   <form>
     <div class="input-group">
       <div class="input-group-btn">
@@ -302,21 +302,19 @@
       <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea><br>
       <div class="row">
         <div class="col-sm-12 form-group">
-          <button class="btn btn-default pull-right" type="submit">Send</button>
+          <p id="noti"></p>
+          <button id="contact" class="btn btn-default pull-right" type="submit">Send</button>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- Image of location/map -->
-<img src="/w3images/map.jpg" class="w3-image w3-greyscale-min" style="width:100%">
-
 <footer class="container-fluid text-center">
-  <a href="#myPage" title="To Top">
+  <a href="#" title="To Top">
     <span class="glyphicon glyphicon-chevron-up"></span>
   </a>
-  <!-- <p> <a href="#" title="Visit w3schools">www.w3schools.com</a></p> -->
+  <h5 style="position:relative; text-align: center; " class="text-center">Made by Tushar</h5>
 </footer>
 <script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
 <script>
@@ -359,6 +357,23 @@ $(document).ready(function(){
   document.getElementById('navBtn').addEventListener('click',function(){
     document.getElementById('phone').classList.toggle('hide');
   })
+
+  
+  const clear = async()=>{
+    const name = document.getElementById('name');
+    const email = document.getElementById('email');
+    const comment = document.getElementById('comments');
+    if(name.value == "" || email.value=="" || comment.value==""){
+      document.getElementById('noti').innerText="Please fill carefully";
+      return;
+    }
+    name.value="";
+    email.value="";
+    comment.value="";
+    document.getElementById('noti').innerText="We will contact you soon";
+  }
+  document.getElementById('contact').addEventListener('click',clear);
+  
 </script>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

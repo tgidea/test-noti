@@ -1,6 +1,7 @@
 const path = require('path');
 const fs = require('fs');
 const Subscribed = require('../schema/schema');
+const SubscribedSecond = require('../schema/secondSchema');
 const mongoose = require('mongoose');
 const webpush = require('web-push');
 const timeOutFunction = require('./sendFunction');
@@ -28,7 +29,7 @@ const changeTime = function (str) {
             newTime += ":00";
         }
     }
-    console.log(newTime);
+    // console.log(newTime);
     return newTime;
 }
 const codechefNotification = async () => {
@@ -38,6 +39,7 @@ const codechefNotification = async () => {
             if (data) {
                 data = JSON.parse(data);
                 const result = await Subscribed.find();
+                const result2 = await SubscribedSecond.find();
                 for (var k = 0; k < data.length; k++) {
                     const first = data[k];
                     const time = first.time;
@@ -63,8 +65,9 @@ const codechefNotification = async () => {
                     // console.log('FInal is ', finalResult);
                     if (findDate(data[k].day.toString()) == d.getDate() && ((finalResult >= (-60000) && finalResult <= 910000) || (finalResult>=1800000 && finalResult<=2410000) )) {
                         console.log('here in codchef');
-                        console.log('calling timeout fucniton');
+                        // console.log('calling timeout fucniton');
                         timeOutFunction(result, data[k].name);
+                        timeOutFunction(result2, data[k].name);
                     }
                 }
             }

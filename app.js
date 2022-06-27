@@ -19,6 +19,7 @@ const codeforcesDataUpdate = require('./dataUpdate/codeforces');
 const codeforcesNotification = require('./functions/codeforces');
 const codechefNotification = require('./functions/codechef');
 const addendpoint = require('./functions/addEndpoint');
+const deleteEndpoint = require('./functions/deleteEndpoint');
 const { channel } = require('diagnostics_channel');
 
 
@@ -41,7 +42,7 @@ app.post('/subscribe', (req, res) => {
     
     const subscription = req.body.subscription;
     const channel = req.body.channel.toString().toLowerCase().trim()+'1s'; 
-    console.log(req.body.subscription);   
+    // console.log(req.body.subscription);   
     if (channel.length > 2) {
         addendpoint(channel,subscription,req,res);
     }
@@ -51,20 +52,16 @@ app.post('/subscribe', (req, res) => {
 })
 
 app.post('/unsubscribe', async (req, res) => {
-    const chanenl = req.body.channel.toString().toLowerCase().trim() + '1s';
+    const channel = req.body.channel.toString().toLowerCase().trim() + '1s';
+    const subscription = req.body.subscription;
+    console.log(channel);
     if (channel.length > 2) {
         try {
-            // const deleted = await Schema.deleteOne({ "client": `${name}` });
-            // if (deleted.deletedCount > 0) {
-            //     res.status(200).send({ "result": "success" })
-            // }
-            // else {
-            //     res.status(400).send({ "result": "unsuccess" })
-            // }
+            deleteEndpoint(channel,subscription,req,res);
         }
         catch (err) {
             console.log(err);
-            res.send({ "result": "Some error occured" });
+            res.send({ "result": "Please Subscribe first" });
         }
     }
 })
@@ -83,7 +80,7 @@ app.post('/create', async (req, res) => {
         res.status(200).send({ "result": "okk" });
     }
     catch (err) {
-        console.log("this name is already taken");
+        console.log("This name is already taken");
         res.status(400).send({ "result": 'This name is already taken' });
     }
 })
@@ -142,18 +139,6 @@ async function runThis(list , text , channel) {
         webpush.sendNotification(data3, payload).catch(err => console.error(err));
     }
 }
-let prevTime = 0;
-// app.get('/notify01/:data', (req, res) => {
-//     const data = req.params.data;
-//     if (Date.now() - prevTime > 10000) {
-//         prevTime = Date.now();
-//         runThis(data);
-//         res.send('Send successfully');
-//     }
-//     else {
-//         res.send(`please try after ${(Date.now() - prevTime) / 1000} seconds`);
-//     }
-// })
 
 //Calling json file creater function
 const callingFun = async () => {
@@ -171,25 +156,12 @@ const callingFun = async () => {
         console.log(err);
     }
 }
-
 callingFun();
-
 
 function timeToAlert() {
     codeforcesNotification();
     codechefNotification();
 }
-
-app.get('/check01', async (req, res) => {
-    try {
-        timeToAlert();
-        res.send("okkkk");
-    }
-    catch (err) {
-        res.send("error");
-        console.log(err);
-    }
-})
 const alertFun = function () {
     // console.log('alert fun activate');
     timeToAlert();
@@ -200,6 +172,14 @@ const alertFun = function () {
 }
 alertFun();
 
+app.get('*',function(req,res){
+    try{
+    res.status(400).send('Page not available');
+    }
+    catch(err){
+        console.log(err);
+    }
+})
 
 const port = process.env.PORT || 5001;
 app.listen(port, () => console.log('Server started'));

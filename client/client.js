@@ -32,6 +32,7 @@ async function sended() {
             userVisibleOnly: true,
             applicationServerKey: urlBase64ToUint8Array(public_keys)
         });
+        localStorage.setItem("subscribed", JSON.stringify(subscription));
         fetch('/subscribe', {
             method: "POST",
             body: JSON.stringify({ channel, subscription }),
@@ -43,9 +44,9 @@ async function sended() {
             return resp.json();
         })
         .then(function(data){            
-            alert_msg.innerText = `${data.result}`;
+            alert_msg.innerHTML = `${data.result}`;
             pushButton.disabled == true
-            localStorage.setItem("subscribed", subscription);
+            localStorage.setItem("subscribed", JSON.stringify(subscription));
         })
     }
     catch (err) {
@@ -54,8 +55,12 @@ async function sended() {
             console.log('trying again');
             await sended();
         }
-        else {
-            alert_msg.innerText = (`Please click again. Please ensure google push service is active if you are using brave browser`);
+        else if(count==1){
+            count= count + 1;
+            alert_msg.innerHTML = (`Please try again.`);
+        }
+        else{
+            alert_msg.innerHTML = `Click <a href="help.html">here</a> if not able to subscribe`;   
         }
     }
 }
@@ -67,38 +72,43 @@ pushButton.addEventListener('click', function () {
             sended()
                 .catch((err) => {
                     pushButton.disabled = false;
-                    alert_msg.innerText = (`Please click again.`);
+                    alert_msg.innerHTML = (`Please click again.`);
                     console.log(err);
                 });
         }
         else {
-            alert_msg.innerText = "Please fill carefully";
+            alert_msg.innerHTML = "Please fill carefully";
         }
     }
     else {
-        alert_msg.innerText = "Check notification permission.";
+        alert_msg.innerHTML = "Check notification permission.";
     }
 
 })
 unsubscribeBtn.addEventListener('click', unsubscribe);
 async function unsubscribe() {
-    const channel = document.getElementById('channel').value;
-    const endpoint = localStorage.getItem('subscribed');
-    if (channel.toString().trim().length < 1) {
-        return alert_msg.innerText = "Please fill carefully"
+    const channelName = document.getElementById('channel').value;
+    const subscription = localStorage.getItem('subscribed');
+    if (channelName.toString().trim().length < 1) {
+        return alert_msg.innerHTML = "Please fill carefully"
     }
-    if (endpoint == NaN || endpoint == undefined || endpoint == false || endpoint == "NULL") {
-        alert_msg.innerText = "Please subscribe first";
+    if (subscription == NaN || subscription == undefined || subscription == false || subscription == "NULL") {
+        alert_msg.innerHTML = "Please subscribe first";
     }
     else {
-        const out = await fetch('/unsubscribe', {
+        fetch('/unsubscribe', {
             method: "POST",
-            body: JSON.stringify({ endpoint, channel }),
+            body: JSON.stringify({ subscription, "channel":channelName }),
             headers: {
                 "content-type": "application/json"
             }
         })
-        alert_msg.innerText = `${out.result}`;
+        .then(function(resp){
+            return resp.json();
+        })
+        .then(function(data){            
+            alert_msg.innerHTML = `${data.result}`;
+        })
     }
 
 }

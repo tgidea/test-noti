@@ -76,28 +76,7 @@
       .navbar-default .navbar-toggle {
         border-color: transparent;
         color: #fff !important;
-      }
-
-      @keyframes slide {
-        0% {
-          opacity: 0;
-          transform: translateY(70%);
-        }
-        100% {
-          opacity: 1;
-          transform: translateY(0%);
-        }
-      }
-      @-webkit-keyframes slide {
-        0% {
-          opacity: 0;
-          -webkit-transform: translateY(70%);
-        }
-        100% {
-          opacity: 1;
-          -webkit-transform: translateY(0%);
-        }
-      }
+      }     
     </style>
     <title>Service</title>
   </head>
@@ -199,7 +178,7 @@
           password.value.toString().length < 1 ||
           message.value.toString().length < 1
         ) {
-          alert_msg.innerText = "Please fill carefully";
+          alert_msg.innerHTML = "Please fill carefully";
           return;
         }
 
@@ -221,11 +200,11 @@
             })
             .then(function (data) {
                 console.log(data);
-              alert_msg.innerText = data.result;
+              alert_msg.innerHTML = data.result;
             });
         } catch (err) {
           console.log(err);
-          alert_msg.innerText = "There is some server error.";
+          alert_msg.innerHTML = "There is some server error.";
         }
       });
     </script>
