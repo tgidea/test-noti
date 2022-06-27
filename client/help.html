@@ -76,7 +76,7 @@
       .navbar-default .navbar-toggle {
         border-color: transparent;
         color: #fff !important;
-      }     
+      }
     </style>
     <title>Service</title>
   </head>
@@ -90,31 +90,63 @@
           <li style="margin-right: 15px"><a href="/">HOME</a></li>
           <li style="margin-right: 15px"><a href="/">SITES</a></li>
           <li style="margin-right: 15px"><a href="/">CONTACT</a></li>
+          <li style="margin-right: 15px"><a href="#">MORE</a></li>
         </ul>
       </div>
     </nav>
     <section>
-        <div id="main">
-            <h3 style="margin-top:30px;">How to avail benefit of our free service.</h3>
-            <ul>                
-                <li>Create a channel for your consumer/views : <a href="/service_create.html">Click here.</a></li>
-                <li>Share your channel and ask to subscribe.</li>
-                <li>That's all ! Connect with your consumer/viewers 24x7. <a href="/subscribe.html">Click here.</a></li>
-                <br>
-                <li>If you want to avail benefit of our contest service : Go to <a href="/subscribe.html">subscribe </a> page. </li>
-                <li>Type channel : <a href="#">contest</a>. </li>
-                <li>That's all ! You may never miss a contest.</li>
-            </ul>
-            <h3 style="margin-top:30px;">Reason for not able to subscribe</h3>
-            <ul>                
-                <li>If you are using brave browser then make sure google push service is active.</li>
-                <li>Safari browser not support notification.</li>
-                <li>Allow browser to show notification.</li>
-                <li>Make sure you are connected to Internet.</li>
-                <li>Make sure the spelling of channel is correct.</li>
-                <li>Still not able to connect write us on <a href="mailto:1guptatushar@gmail.com">mail</a>.</li>
-            </ul>
-        </div>
+      <div id="main">
+        <h3 style="margin-top: 30px">
+          How to avail benefit of our free service.
+        </h3>
+        <ul>
+          <li>
+            Make sure you are using
+            <a href="https://tushargoyal.herokuapp.com"
+              >https://tushargoyal.herokuapp.com</a
+            >
+            not <a href="#">http://tushargoyal.herokuapp.com</a>
+          </li>
+          <li>
+            Create a channel for your consumer/views :
+            <a href="/service_create.html">Click here.</a>
+          </li>
+          <li>Share your channel and ask to subscribe.</li>
+          <li>
+            That's all ! Connect with your consumer/viewers 24x7.
+            <a href="/subscribe.html">Click here.</a>
+          </li>
+          <br />
+          <li>
+            If you want to avail benefit of our contest service : Go to
+            <a href="/subscribe.html">subscribe </a> page.
+          </li>
+          <li>Type channel : <a href="#">contest</a>.</li>
+          <li>That's all ! You may never miss a contest.</li>
+        </ul>
+        <h3 style="margin-top: 30px">Reason for not able to subscribe</h3>
+        <ul>
+          <li>
+            If you are using brave browser then make sure google push service is
+            active.
+          </li>
+          <li>
+            Make sure you are using
+            <a href="https://tushargoyal.herokuapp.com"
+              >https://tushargoyal.herokuapp.com</a
+            >
+            not <a href="#">http://tushargoyal.herokuapp.com</a>
+          </li>
+          <li>Safari browser not support notification.</li>
+          <li>Allow browser to show notification.</li>
+          <li>Make sure you are connected to Internet.</li>
+          <li>Make sure the spelling of channel is correct.</li>
+          <li>
+            Still not able to connect write us on
+            <a href="mailto:1guptatushar@gmail.com">mail</a>.
+          </li>
+        </ul>
+      </div>
     </section>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -154,7 +186,7 @@
               return resp.json();
             })
             .then(function (data) {
-                console.log(data);
+              console.log(data);
               alert_msg.innerText = data.result;
             });
         } catch (err) {
