@@ -29,7 +29,7 @@ const addendpoint = async (channel, subscription, req, res) => {
                     }
                     catch (err) {   
                         console.log(err,'aaaaa');                     
-                        return res.status(400).send({ "result": "You are already subscribed to this chanenl" })
+                        return res.status(400).send({ "result": "You are already subscribed to this channel" })
                     }
                 }
                 else {

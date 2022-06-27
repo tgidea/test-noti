@@ -5,7 +5,7 @@ self.addEventListener("push", e => {
     self.registration.showNotification(
         data.title, // title of the notification
         {
-            body: "Get Ready for contest", //the body of the push notification
+            body: "Alert", //the body of the push notification
             image: `${data.image}`,
             
         }
