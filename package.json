@@ -4,7 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "dev": "nodemon server.js"
   },
   "keywords": [],
   "author": "",
@@ -17,5 +18,8 @@
     "express": "^4.17.3",
     "mongoose": "^6.2.10",
     "web-push": "^3.4.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.18"
   }
 }

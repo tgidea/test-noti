@@ -3,14 +3,14 @@ const fs = require('fs');
 const Subscribed = require('../schema/schema');
 const mongoose = require('mongoose');
 const webpush = require('web-push');
-const timeOutFunction = require('../functions/sendFunction');
+const timeOutFunction = require('./sendFunction');
 
 const atcoderNotification = async () => {
     try {
         fs.readFile(path.join(__dirname, '../json/atcoder.json'), 'utf-8', async (err, data) => {
             if (data) {
                 data = JSON.parse(data);
-                console.log(data);
+                // console.log(data);
                 const result = await Subscribed.find();
                 // for (var k = 0; k < data.length; k++) {
                     

@@ -48,16 +48,22 @@ const atcoderupd = function () {
                             i++;
                         })
                         if (name != undefined) {
-                            articles.push({ name, nameLink, time, timeLink });
+                            var codePrevUpd = Date.now();
+                            articles.push({ name, nameLink, time, timeLink ,codePrevUpd});
                         }
                     })
                 })
 
-                fs.writeFile(path.join(__dirname, '../json/', 'atcoder.json'), JSON.stringify(articles, null, 2), (err) => {
+                fs.writeFile(path.join(__dirname, '../client/atcoder', 'atcoder.json'), JSON.stringify(articles, null, 2), (err) => {
                     if (err) {
-                        console.log('atcoder error1');
+                        console.log('atcoder error1',err);
                     }
                 })
+                fs.writeFile(path.join(__dirname, '../json/', 'atcoder.json'), JSON.stringify(articles, null, 2), (err) => {
+                    if (err) {
+                        console.log('atcoder error1',err);
+                    }
+                }) 
             })
             .catch(err => console.log(err));
     }

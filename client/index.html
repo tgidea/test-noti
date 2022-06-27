@@ -1,229 +1,334 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-VP9091QPFN"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
+<head>
+  <!-- Theme Made By www.w3schools.com -->
+  <title>e</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <!-- <link rel="stylesheet" href="style.css"> -->
+  <style>
+    body {
+    font: 400 15px Lato, sans-serif;
+    line-height: 1.8;
+    color: #818181;
+  }
+  h2 {
+    font-size: 24px;
+    text-transform: uppercase;
+    color: #303030;
+    font-weight: 600;
+    margin-bottom: 30px;
+  }
+  h4 {
+    font-size: 19px;
+    line-height: 1.375em;
+    color: #303030;
+    font-weight: 400;
+    margin-bottom: 30px;
+  }  
+  .jumbotron {
+    background-color: #f4511e;
+    color: #fff;
+    padding: 100px 25px;
+    font-family: Montserrat, sans-serif;
+  }
+  .container-fluid {
+    padding: 60px 50px;
+  }
+  .bg-grey {
+    background-color: #f6f6f6;
+  }
+  .logo-small {
+    color: #f4511e;
+    font-size: 50px;
+  }
+  .logo {
+    color: #f4511e;
+    font-size: 200px;
+  }
+  .thumbnail {
+    padding: 0 0 15px 0;
+    border: none;
+    border-radius: 0;
+  }
+  .thumbnail img {
+    width: 100%;
+    height: 100%;
+    margin-bottom: 10px;
+  }
+  .carousel-control.right, .carousel-control.left {
+    background-image: none;
+    color: #f4511e;
+  }
+  .carousel-indicators li {
+    border-color: #f4511e;
+  }
+  .carousel-indicators li.active {
+    background-color: #f4511e;
+  }
+  .item h4 {
+    font-size: 19px;
+    line-height: 1.375em;
+    font-weight: 400;
+    font-style: italic;
+    margin: 70px 0;
+  }
+  .item span {
+    font-style: normal;
+  }
+  .panel {
+    border: 1px solid #f4511e; 
+    border-radius:0 !important;
+    transition: box-shadow 0.5s;
+  }
+  .panel:hover {
+    box-shadow: 5px 0px 40px rgba(0,0,0, .2);
+  }
+  .panel-footer .btn:hover {
+    border: 1px solid #f4511e;
+    background-color: #fff !important;
+    color: #f4511e;
+  }
+  .panel-heading {
+    color: #fff !important;
+    background-color: #f4511e !important;
+    padding: 25px;
+    border-bottom: 1px solid transparent;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+  }
+  .panel-footer {
+    background-color: white !important;
+  }
+  .panel-footer h3 {
+    font-size: 32px;
+  }
+  .panel-footer h4 {
+    color: #aaa;
+    font-size: 14px;
+  }
+  .panel-footer .btn {
+    margin: 15px 0;
+    background-color: #f4511e;
+    color: #fff;
+  }
+  .navbar {
+    margin-bottom: 0;
+    background-color: #f4511e;
+    z-index: 9999;
+    border: 0;
+    font-size: 12px !important;
+    line-height: 1.42857143 !important;
+    letter-spacing: 4px;
+    border-radius: 0;
+    font-family: Montserrat, sans-serif;
+  }
+  .navbar li a, .navbar .navbar-brand {
+    color: #fff !important;
+  }
+  .navbar-nav li a:hover, .navbar-nav li.active a {
+    color: #f4511e !important;
+    background-color: #fff !important;
+  }
+  .navbar-default .navbar-toggle {
+    border-color: transparent;
+    color: #fff !important;
+  }
+  footer .glyphicon {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #f4511e;
+  }
+  .slideanim {visibility:hidden;}
+  .slide {
+    animation-name: slide;
+    -webkit-animation-name: slide;
+    animation-duration: 1s;
+    -webkit-animation-duration: 1s;
+    visibility: visible;
+  }
+  @keyframes slide {
+    0% {
+      opacity: 0;
+      transform: translateY(70%);
+    } 
+    100% {
+      opacity: 1;
+      transform: translateY(0%);
+    }
+  }
+  @-webkit-keyframes slide {
+    0% {
+      opacity: 0;
+      -webkit-transform: translateY(70%);
+    } 
+    100% {
+      opacity: 1;
+      -webkit-transform: translateY(0%);
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .col-sm-4 {
+      text-align: center;
+      margin: 25px 0;
+    }
+    .btn-lg {
+      width: 100%;
+      margin-bottom: 35px;
+    }
+  }
+  @media screen and (max-width: 480px) {
+    .logo {
+      font-size: 150px;
+    }
+  }
+  </style>
+</head>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
 
-      gtag("config", "G-VP9091QPFN");
-    </script>
-    <!-- Bootstrap CSS -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-      crossorigin="anonymous"
-    />
-    <style>
-      /*
-       * Globals
-       */
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">MU</a>
+    </div>
+    <div class="collapse navbar-collapse " id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#about">HOME</a></li>
+        <li><a href="#sites">SITES</a></li>        
+        <li><a href="#contact">CONTACT</a></li>
+        <li><a href="service.html">SERVICE</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
 
-      /* Links */
-      a,
-      a:focus,
-      a:hover {
-        color: #fff;
-      }
+<div id="about" class="jumbotron text-center">
+  <h1>MyUpdates</h1> 
+  <p>We provide notification sending service besides give notification about upcoming coding contest.</p> 
+  <form>
+    <div class="input-group">
+      <div class="input-group-btn">
+        <a href="/subscribe.html" style="background-color: white;color:#f4511e; border-radius: 20px;" class="btn">Subscribe</a>
+      </div>
+    </div>
+  </form>
+</div>
 
-      /* Custom default button */
-      .btn-default,
-      .btn-default:hover,
-      .btn-default:focus {
-        color: #333;
-        text-shadow: none; /* Prevent inheritence from `body` */
-        background-color: #fff;
-        border: 1px solid #fff;
-      }
 
-      /*
-       * Base structure
-       */
+<!-- Container (Services Section) -->
+<div id="sites" class="container-fluid text-center">
+  <h2>Added Platform</h2>
+  <!-- <h4>What we offer</h4> -->
+  <br>
+  <div class="row slideanim">
+    <div class="col-sm-4">
+      <a href="./codechef/codechef.html" style="color:black">
+        <span class="iconify" data-icon="simple-icons:codechef"   data-width="100" data-height="100"></span>
+        <h4>CODECHEF</h4>
+      </a>
+    
+    </div>
+    <div class="col-sm-4">
+      <a href="./codeforces/codeforces.html" style="color:black">
+        <span class="iconify" data-icon="simple-icons:codeforces"  data-width="100" data-height="100"></span>
+        <h4>CODEFORCES</h4>
+      </a>
+      <!-- <p>Lorem ipsum dolor sit amet..</p> -->
+    </div>
+    <div class="col-sm-4">
+      <a href="./atcoder/atcoder.html" style="color:black">
+        <img src="https://img.atcoder.jp/assets/atcoder.png" style="width:118px" a="atcoder icon">
+        <h4>ATCODER</h4>
+      </a>
+      <!-- <p>Lorem ipsum dolor sit amet..</p> -->
+    </div>
+  </div>
+  <br><br>
 
-      html,
-      body {
-        height: 100%;
-        background-color: #fff;
-      }
-      body {
-        color: #fff;
-        text-align: center;
-        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-      }
+  </div>
+</div>
 
-      /* Extra markup and styles for table-esque vertical and horizontal centering */
-      .site-wrapper {
-        display: table;
-        width: 100%;
-        height: 600px;
-        background-color: #333;
-        /*height: 100%; */
-        /*min-height: 100%;*/
-      }
-      .site-wrapper-inner {
-        display: table-cell;
-        vertical-align: top;
-      }
-      .cover-container {
-        margin-right: auto;
-        margin-left: auto;
-      }
-
-      /* Padding for spacing */
-      .inner {
-        padding: 30px;
-      }
-
-      /*
-       * Header
-       */
-      .masthead-brand {
-        margin-top: 10px;
-        margin-bottom: 10px;
-      }
-
-      .masthead-nav > li {
-        display: inline-block;
-      }
-      .masthead-nav > li + li {
-        margin-left: 20px;
-      }
-      .masthead-nav > li > a {
-        padding-right: 0;
-        padding-left: 0;
-        font-size: 16px;
-        font-weight: bold;
-        color: #fff; /* IE8 proofing */
-        color: rgba(255, 255, 255, 0.75);
-        border-bottom: 2px solid transparent;
-      }
-      .masthead-nav > li > a:hover,
-      .masthead-nav > li > a:focus {
-        background-color: transparent;
-        border-bottom-color: #a9a9a9;
-        border-bottom-color: rgba(255, 255, 255, 0.25);
-      }
-      .masthead-nav > .active > a,
-      .masthead-nav > .active > a:hover,
-      .masthead-nav > .active > a:focus {
-        color: #fff;
-        border-bottom-color: #fff;
-      }
-
-      @media (min-width: 768px) {
-        .masthead-brand {
-          float: left;
-        }
-        .masthead-nav {
-          float: right;
-        }
-      }
-
-      /*
-       * Cover
-       */
-
-      .cover {
-        padding: 0 20px;
-      }
-      .cover .btn-lg {
-        padding: 10px 20px;
-        font-weight: bold;
-      }
-
-      /*
-       * Affix and center
-       */
-
-      @media (min-width: 768px) {
-        /* Pull out the header and footer */
-        .masthead {
-          position: fixed;
-          top: 0;
-        }
-        /* Start the vertical centering */
-        .site-wrapper-inner {
-          vertical-align: middle;
-        }
-      }
-    </style>
-    <title>Subscribe</title>
-  </head>
-  <body>
-    <div class="site-wrapper">
-      <div class="site-wrapper-inner">
-        <div class="container">
-          <div class="masthead clearfix">
-            <div class="container inner">
-              <h3 class="masthead-brand">My Updates</h3>
-              <nav>
-                <ul class="nav masthead-nav">
-                  <li class="active"><a href="#">Home</a></li>
-                  <li><a href="https://mycollegeupdates.herokuapp.com">Explore Future Contest</a></li>
-                  <li><a href="mailto:gyanexplode@gmail.com">Contact</a></li>
-                </ul>
-              </nav>
-            </div>
-          </div>
-
-          <div class="inner cover">
-            <h1 class="cover-heading">Subscribe to get notification</h1>
-            <p class="lead">
-              My Updates is a web app which give notification about upcoming
-              contest before 5-15 min so that no enthusiast miss any contest.
-            </p>
-            <p class="lead">
-              <button
-                id="codechef"
-                class="btn btn-primary btn-lg border-0 w-100"
-              >
-                Subscribe Now
-              </button>
-              <br />
-              <button
-                id="unsubscribe"
-                style="margin-top: 10px"
-                class="btn btn-primary btn-lg border-0 w-100"
-              >
-                Unsubscribe
-              </button>
-            </p>
-          </div>
+<div id="contact" class="container-fluid bg-grey">
+  <h2 class="text-center">CONTACT</h2>
+  <div class="row">
+    <div class="col-sm-5">
+      <p>Contact us and we'll get back to you within 24 hours.</p>
+      <p><span class="glyphicon glyphicon-map-marker"></span> Haryana, India</p>
+      <!-- <p><span class="glyphicon glyphicon-phone"></span> +00 1515151515</p> -->
+      <p><span class="glyphicon glyphicon-envelope"></span> 1guptatushar@gmail.com</p>
+    </div>
+    <div class="col-sm-7 slideanim">
+      <div class="row">
+        <div class="col-sm-6 form-group">
+          <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
+        </div>
+        <div class="col-sm-6 form-group">
+          <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
+        </div>
+      </div>
+      <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea><br>
+      <div class="row">
+        <div class="col-sm-12 form-group">
+          <button class="btn btn-default pull-right" type="submit">Send</button>
         </div>
       </div>
     </div>
+  </div>
+</div>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="client.js"></script>
-    <script
-      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
-      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
-      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-      crossorigin="anonymous"
-    ></script>
-  </body>
+<!-- Image of location/map -->
+<img src="/w3images/map.jpg" class="w3-image w3-greyscale-min" style="width:100%">
+
+<footer class="container-fluid text-center">
+  <a href="#myPage" title="To Top">
+    <span class="glyphicon glyphicon-chevron-up"></span>
+  </a>
+  <!-- <p> <a href="#" title="Visit w3schools">www.w3schools.com</a></p> -->
+</footer>
+<script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
+<script>
+$(document).ready(function(){
+  // Add smooth scrolling to all links in navbar + footer link
+  $(".navbar a, footer a[href='#myPage']").on('click', function(event) {
+    // Make sure this.hash has a value before overriding default behavior
+    if (this.hash !== "") {
+      // Prevent default anchor click behavior
+      event.preventDefault();
+
+      // Store hash
+      var hash = this.hash;
+
+      // Using jQuery's animate() method to add smooth page scroll
+      // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 900, function(){
+   
+        // Add hash (#) to URL when done scrolling (default click behavior)
+        window.location.hash = hash;
+      });
+    } // End if
+  });
+  
+  $(window).scroll(function() {
+    $(".slideanim").each(function(){
+      var pos = $(this).offset().top;
+
+      var winTop = $(window).scrollTop();
+        if (pos < winTop + 600) {
+          $(this).addClass("slide");
+        }
+    });
+  });
+})
+</script>
+
+</body>
 </html>

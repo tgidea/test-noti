@@ -43,10 +43,11 @@ const codeforcesupd = function () {
                                 j++;
                             })
                             if (name != undefined) {
-                                articles.push({ name, time, duration, toStart, toRegister, link });
+                                var codePrevUpd = Date.now();
+                                articles.push({ name, time, duration, toStart, toRegister, link ,codePrevUpd});
                             }
                         })
-                        // console.log(articles);
+                        console.log(articles);
                     }
                     else {
                         return;
@@ -54,6 +55,11 @@ const codeforcesupd = function () {
                     i++;
                 })
                 if (articles.length > 0) {
+                    fs.writeFile(path.join(__dirname, '../client/codeforces', 'codeforces.json'), JSON.stringify(articles, null, 2), (err) => {
+                        if (err) {
+                            console.log('atcoder error1',err);
+                        }
+                    })
                     fs.writeFile(path.join(__dirname, '../json/', 'codeforces.json'), JSON.stringify(articles, null, 2), (err) => {
                         if (err) {
                             console.log('codeforces err 1');

@@ -51,11 +51,17 @@ const codechefupd = function () {
                         link = $(this).attr('href');
                     })
                     if (day != undefined && name != undefined) {
-                        articles.push({ day, month, name, time, link });
+                        var codePrevUpd = Date.now();
+                        articles.push({ day, month, name, time, link , codePrevUpd});
                     }
                     // console.log(articles);
                 })
                 if (articles.length > 0) {
+                    fs.writeFile(path.join(__dirname, '../client/codechef', 'codechef.json'), JSON.stringify(articles, null, 2), (err) => {
+                        if (err) {
+                            console.log('atcoder error1',err);
+                        }
+                    })
                     fs.writeFile(path.join(__dirname, '../json/', 'codechef.json'), JSON.stringify(articles, null, 2), (err) => {
                         if (err) {
                             console.log('codechef error1');
@@ -67,5 +73,5 @@ const codechefupd = function () {
     }
     catch (err) { console.log('codechef err3') }
 }
-// codechefupd();
+codechefupd();
 module.exports = codechefupd;

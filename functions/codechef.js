@@ -3,7 +3,7 @@ const fs = require('fs');
 const Subscribed = require('../schema/schema');
 const mongoose = require('mongoose');
 const webpush = require('web-push');
-const timeOutFunction = require('../functions/sendFunction');
+const timeOutFunction = require('./sendFunction');
 
 const findDate = function (str) {
     if (str[0] == '0') {
@@ -45,11 +45,11 @@ const codechefNotification = async () => {
                     const d = new Date();
                     const preTime = `${d.getMonth() + 1}/${d.getDate()}/${d.getFullYear()} ${ist}`;
                     const notifyTime = new Date(preTime);
-                    console.log(preTime, notifyTime);
+                    // console.log(preTime, notifyTime);
                     const notifyMiliSecond = notifyTime.getTime();
 
                     let finalResult = notifyMiliSecond - Date.now();
-                    console.log(findDate(data[k].day.toString()), finalResult);
+                    // console.log(findDate(data[k].day.toString()), finalResult);
 
                     //As heroku server in US so new Date convert according to US zone;
                     
@@ -60,7 +60,7 @@ const codechefNotification = async () => {
 
 
 
-                    console.log('FInal is ', finalResult);
+                    // console.log('FInal is ', finalResult);
                     if (findDate(data[k].day.toString()) == d.getDate() && ((finalResult >= (-60000) && finalResult <= 910000) || (finalResult>=1800000 && finalResult<=2410000) )) {
                         console.log('here in codchef');
                         console.log('calling timeout fucniton');
