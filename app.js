@@ -143,17 +143,17 @@ async function runThis(list , text , channel) {
     }
 }
 let prevTime = 0;
-app.get('/notify01/:data', (req, res) => {
-    const data = req.params.data;
-    if (Date.now() - prevTime > 10000) {
-        prevTime = Date.now();
-        runThis(data);
-        res.send('Send successfully');
-    }
-    else {
-        res.send(`please try after ${(Date.now() - prevTime) / 1000} seconds`);
-    }
-})
+// app.get('/notify01/:data', (req, res) => {
+//     const data = req.params.data;
+//     if (Date.now() - prevTime > 10000) {
+//         prevTime = Date.now();
+//         runThis(data);
+//         res.send('Send successfully');
+//     }
+//     else {
+//         res.send(`please try after ${(Date.now() - prevTime) / 1000} seconds`);
+//     }
+// })
 
 //Calling json file creater function
 const callingFun = async () => {
@@ -172,7 +172,7 @@ const callingFun = async () => {
     }
 }
 
-// callingFun();
+callingFun();
 
 
 function timeToAlert() {
@@ -198,7 +198,7 @@ const alertFun = function () {
         alertFun();
     }, 600000)
 }
-// alertFun();
+alertFun();
 
 
 const port = process.env.PORT || 5001;
