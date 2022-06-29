@@ -83,6 +83,7 @@ pushButton.addEventListener('click', function () {
     else {
         alert_msg.innerHTML = "Check notification permission.";
     }
+    document.getElementById('channel').value="";
 
 })
 unsubscribeBtn.addEventListener('click', unsubscribe);
@@ -109,6 +110,7 @@ async function unsubscribe() {
         .then(function(data){            
             alert_msg.innerHTML = `${data.result}`;
         })
+        document.getElementById('channel').value="";
     }
 
 }

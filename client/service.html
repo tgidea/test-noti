@@ -76,7 +76,7 @@
       .navbar-default .navbar-toggle {
         border-color: transparent;
         color: #fff !important;
-      }     
+      }
     </style>
     <title>Service</title>
   </head>
@@ -89,7 +89,9 @@
         <ul style="flex-direction: row" class="nav navbar-nav navbar-right">
           <li style="margin-right: 15px"><a href="/">HOME</a></li>
           <li style="margin-right: 15px"><a href="#">SERVICE</a></li>
-          <li style="margin-right: 15px"><a href="mailto:gyanexplode@gmail.com">CONTACT</a></li>
+          <li style="margin-right: 15px">
+            <a href="mailto:gyanexplode@gmail.com">CONTACT</a>
+          </li>
           <li style="margin-right: 15px"><a href="/help.html">MORE</a></li>
         </ul>
       </div>
@@ -107,6 +109,7 @@
                     <input
                       type="text"
                       id="channel"
+                      placeholder="Enter your channel"
                       class="form-control form-control-lg"
                     />
                     <label
@@ -120,6 +123,7 @@
                     <input
                       type="password"
                       id="password"
+                      placeholder="Enter password"
                       class="form-control form-control-lg"
                     />
                     <label
@@ -133,14 +137,23 @@
                     <input
                       type="text"
                       id="message"
+                      placeholder="Enter message"
+                      oninput="countText(value)"
                       class="form-control form-control-lg"
                     />
+
                     <label
                       style="color: #f4511e"
                       class="form-label"
                       for="message"
                       >Message</label
                     >
+                    <p
+                      id="messageCount"
+                      style="position: absolute; top: 62%; right: 2%"
+                    >
+                      42/42
+                    </p>
                   </div>
                   <div id="alert_msg"></div>
                   <button
@@ -166,7 +179,7 @@
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script>
       const alert_msg = document.getElementById("alert_msg");
-
+      const messageCount = document.getElementById("messageCount");
       const noti_req = document.getElementById("notification_request");
       noti_req.addEventListener("submit", async (e) => {
         e.preventDefault();
@@ -200,14 +213,27 @@
               return resp.json();
             })
             .then(function (data) {
-                console.log(data);
+              console.log(data);
               alert_msg.innerHTML = data.result;
+              password.value = "";
+              message.value = "";
             });
         } catch (err) {
           console.log(err);
           alert_msg.innerHTML = "There is some server error.";
         }
       });
+
+      function countText(value) {
+        if (value.length >= 43) {
+          const inputMsg  = document.getElementById('message');
+          const msg = inputMsg.value.substring(0,42);
+          console.log(msg);
+          inputMsg.value = msg;
+        } else {
+          messageCount.innerText = `${42-value.length}/42`;
+        }
+      }
     </script>
     <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
