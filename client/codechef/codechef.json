@@ -1,18 +1,26 @@
 [
   {
-    "day": "29",
-    "month": "Jun",
-    "name": "Starters 45",
-    "time": "08:00 PM IST",
-    "link": "https://www.codechef.com/START45?itm_medium=hpevents&itm_campaign=START45",
-    "codePrevUpd": 1656508512475
+    "day": "11",
+    "month": "Jul",
+    "name": "July Long Challenge I",
+    "time": "03:00 PM IST",
+    "link": "https://www.codechef.com/JULY221?itm_medium=hpevents&itm_campaign=JULY221",
+    "codePrevUpd": 1657301503940
   },
   {
-    "day": "03",
+    "day": "13",
     "month": "Jul",
-    "name": "July Cook-Off",
+    "name": "Starters 47",
     "time": "08:00 PM IST",
-    "link": "https://www.codechef.com/COOK143?itm_medium=hpevents&itm_campaign=COOK143",
-    "codePrevUpd": 1656508512475
+    "link": "https://www.codechef.com/START47?itm_medium=hpevents&itm_campaign=START47",
+    "codePrevUpd": 1657301503940
+  },
+  {
+    "day": "17",
+    "month": "Jul",
+    "name": "July Lunchtime",
+    "time": "08:00 PM IST",
+    "link": "https://www.codechef.com/LTIME110?itm_medium=hpevents&itm_campaign=LTIME110",
+    "codePrevUpd": 1657301503941
   }
 ]

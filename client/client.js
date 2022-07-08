@@ -45,6 +45,7 @@ async function sended() {
         })
         .then(function(data){            
             alert_msg.innerHTML = `${data.result}`;
+            document.getElementById('channel').value="";
             pushButton.disabled == true
             localStorage.setItem("subscribed", JSON.stringify(subscription));
         })
@@ -83,7 +84,7 @@ pushButton.addEventListener('click', function () {
     else {
         alert_msg.innerHTML = "Check notification permission.";
     }
-    document.getElementById('channel').value="";
+    
 
 })
 unsubscribeBtn.addEventListener('click', unsubscribe);
