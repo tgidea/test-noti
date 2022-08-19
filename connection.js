@@ -6,5 +6,5 @@ const conn = mongoose.connect(url, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).then(() => console.log('success connection'))
-    .catch((err) => console.log(err))
+    .catch((err) => console.log("Error in connecting mongo . Check Internet Connection"))
     module.exports=conn;

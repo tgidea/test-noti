@@ -66,6 +66,20 @@ app.post('/unsubscribe', async (req, res) => {
     }
 })
 
+app.post('/formsubmit',async(req,res)=>{
+    try{        
+        if(req.body.name.length < 2 || req.body.email == "" || req.body.comment==""){
+            res.status(400).send({"result":"Please fill carefully"});
+            return;
+        }
+        res.send({"result":"Your response has been recorded."});
+    }
+    catch(err){
+        console.log(err);
+        res.status(400).send({"result":"Some error occured."});
+    }
+})
+
 app.post('/create', async (req, res) => {
     try {
         const channel = req.body.channel.toString().toLowerCase().trim() + '1s';
@@ -182,4 +196,4 @@ app.get('*',function(req,res){
 })
 
 const port = process.env.PORT || 5001;
-app.listen(port, () => console.log('Server started'));
+app.listen(port, () => console.log(`Server started at ${5001}`));

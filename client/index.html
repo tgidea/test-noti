@@ -285,7 +285,7 @@
   </div>
 </div>
 
-<div id="contact" class="container-fluid bg-grey">
+<div class="container-fluid bg-grey">
   <h2 class="text-center">CONTACT</h2>
   <div class="row">
     <div class="col-sm-5">
@@ -293,21 +293,23 @@
       <p><span class="glyphicon glyphicon-map-marker"></span> Haryana, India</p>      
     </div>
     <div class="col-sm-7 slideanim">
-      <div class="row">
-        <div class="col-sm-6 form-group">
-          <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
+      <form id="contactform">
+        <div class="row">
+          <div class="col-sm-6 form-group">
+            <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
+          </div>
+          <div class="col-sm-6 form-group">
+            <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
+          </div>
         </div>
-        <div class="col-sm-6 form-group">
-          <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
+        <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea><br>
+        <div class="row">
+          <div class="col-sm-12 form-group">
+            <p id="noti"></p>
+            <button id="contact" class="btn btn-default pull-right" type="submit">Send</button>
+          </div>
         </div>
-      </div>
-      <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea><br>
-      <div class="row">
-        <div class="col-sm-12 form-group">
-          <p id="noti"></p>
-          <button id="contact" class="btn btn-default pull-right" type="submit">Send</button>
-        </div>
-      </div>
+      </form>
     </div>
   </div>
 </div>
@@ -359,22 +361,47 @@ $(document).ready(function(){
   document.getElementById('navBtn').addEventListener('click',function(){
     document.getElementById('phone').classList.toggle('hide');
   })
+  const name = document.getElementById('name');
+  const email = document.getElementById('email');
+  const comment = document.getElementById('comments');
+  const noti =  document.getElementById('noti');
 
   
   const clear = async()=>{
-    const name = document.getElementById('name');
-    const email = document.getElementById('email');
-    const comment = document.getElementById('comments');
     if(name.value == "" || email.value=="" || comment.value==""){
       document.getElementById('noti').innerText="Please fill carefully";
       return;
     }
     name.value="";
     email.value="";
-    comment.value="";
-    document.getElementById('noti').innerText="We will contact you soon";
+    comment.value="";    
   }
-  document.getElementById('contact').addEventListener('click',clear);
+  document.getElementById('contactform').addEventListener('submit',function(e){
+    e.preventDefault();
+    if(name.value == "" || email.value=="" || comment.value==""){
+      document.getElementById('noti').innerText="Please fill carefully";
+      return;
+    }
+    fetch("/formsubmit", {
+            method: "POST",
+            headers: {
+              "Content-type": "application/json",
+            },
+            body: JSON.stringify({
+              'name': name.value.toString(),
+              'email': email.value.toString(),
+              'comment': comment.value.toString(),
+            }),
+          })
+          .then((resp)=>{            
+            return resp.json();
+          })
+          .then((data)=>{
+            noti.innerText= `${data.result}`;
+            noti.innerHTML += `<br>We will contact you soon.`;
+            clear();
+          })
+  });
   
 </script>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
