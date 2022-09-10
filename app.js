@@ -16,12 +16,13 @@ const axios = require('axios');
 const atCoderDataUpdate = require('./dataUpdate/atcoder');
 const codechefDataUpdate = require('./dataUpdate/codechef');
 const codeforcesDataUpdate = require('./dataUpdate/codeforces');
+const tpcUpdate = require('./dataUpdate/tpc');
 const codeforcesNotification = require('./functions/codeforces');
 const codechefNotification = require('./functions/codechef');
 const addendpoint = require('./functions/addEndpoint');
 const deleteEndpoint = require('./functions/deleteEndpoint');
-const { channel } = require('diagnostics_channel');
-
+// const { channel } = require('diagnostics_channel');
+//Voluntary application server identity
 
 require('dotenv').config({ path: __dirname + '/config.env' });
 const private_keys = process.env.PRIVATE_KEY;
@@ -30,7 +31,7 @@ const public_keys = 'BIVj4YrGKo27YGVRf4oGmWEuQmKP3RU4-hpqYgiOA1euhIxTGww0tRira53
 webpush.setVapidDetails('mailto:gyanexplode@gmail.com', public_keys, private_keys);
 
 const staticPath = path.join(__dirname, '/client');
-app.set('view engine', 'ejs');
+
 app.use(express.static(staticPath));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
@@ -41,8 +42,7 @@ app.get('/', (req, res) => {
 app.post('/subscribe', (req, res) => {
     
     const subscription = req.body.subscription;
-    const channel = req.body.channel.toString().toLowerCase().trim()+'1s'; 
-    // console.log(req.body.subscription);   
+    const channel = req.body.channel.toString().toLowerCase().trim()+'1s';      
     if (channel.length > 2) {
         addendpoint(channel,subscription,req,res);
     }
@@ -144,8 +144,7 @@ app.post('/sendnoti', async (req, res) => {
         res.status(400).send({ "result": "Invalid channel" });
     }
 })
-async function runThis(list , text , channel) {
-    // const list = await Schema.find();
+async function runThis(list , text , channel) {    
     console.log(list[0].subscription);
     for (var i = 0; i < list.length; i++) {                        
         const data3 =(JSON.parse(list[i].subscription));        
@@ -164,7 +163,10 @@ const callingFun = async () => {
             atCoderDataUpdate();
             codechefDataUpdate();
             codeforcesDataUpdate();
-        }, 180000)       
+        }, 180000);
+        setInterval(async()=>{
+            tpcUpdate();
+        },1500000);       
     }
     catch (err) {
         console.log(err);
@@ -182,7 +184,7 @@ const alertFun = function () {
     setTimeout(function () {
         console.log('setTimeout complete');
         alertFun();
-    }, 600000)
+    }, 600000)    
 }
 alertFun();
 
