@@ -62,7 +62,7 @@ const showData = (articles) => {
         // showTime(articles[0].codePrevUpd);
 
         for (var i = 0; i < artitem.length; i++) {
-            var time = changeTime(artitem[i].time.toString());
+            // var time = changeTime(artitem[i].time.toString());
             var output = "";
             output += `
     <div class="card text-center" style="border-color:#f4511e;">
@@ -70,7 +70,7 @@ const showData = (articles) => {
      <p class="card-text font-weight-bold btn-color card-header ">${artitem[i].name}</p>
      <p class="card-text card-header ">Duration : ${artitem[i].duration}</p>
      <p class="card-text card-header "> ${artitem[i].toStart}</p>
-     <p class="card-text card-header "><a style="border: 1px solid #f4511e;" href="${artitem[i].link}" class="btn btn-color">${time}  <sup>IST</sup></a></p>
+     <p class="card-text card-header "><a style="border: 1px solid #f4511e;" href="${artitem[i].link}" class="btn btn-color">${artitem[i].time}  <sup>IST</sup></a></p>
        </div>
      </div>`
             items_list.innerHTML += output;

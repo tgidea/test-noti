@@ -4,6 +4,31 @@ const cheerio = require('cheerio');
 const axios = require('axios');
 const fs = require('fs');
 const { data } = require('cheerio/lib/api/attributes');
+const updateSheet = require('./updateSheet')
+let lastUpdated = Date.now();
+
+const changeTime = function (str) {
+    var num = "", num2 = "", carry = 0, actual = "", i;
+    const len = str.length;
+    for (i = len - 1; i > len - 5; i--) {
+        if (str[i] == ':') {
+            for (var j = i - 1; j >= i - 2; j--) {num2 += str[j];}
+            break;
+        }
+        else {num += str[i];}
+    }
+    var minute = parseInt(num.split('').reverse().join(''));
+    var hour = parseInt(num2.split('').reverse().join(''));
+    minute += 30;
+    if (minute > 60) {
+        minute = minute - 60;
+        hour += 3;
+    }
+    else {hour += 2;}
+    for (var j = 0; j < i - 2; j++) {actual += str[j];}
+    actual += " " + hour + ":" + minute;
+    return actual;
+}
 
 const codeforcesupd = function () {
 
@@ -14,7 +39,7 @@ const codeforcesupd = function () {
                 const $ = cheerio.load(html);
                 let i = 0;
                 const articles = [];
-                let name, time, duration, toStart, toRegister, link;
+                let name, time, duration, toStart, toRegister, link , timeOri;
                 $('table', html).each(function () {
                     if (i == 0) {
                         $(this).find('tr').each(function () {
@@ -27,9 +52,9 @@ const codeforcesupd = function () {
                                     name = dataInner;
                                     link = `https://codeforces.com/contests`;
                                 }
-                                if (j == 2) {
-                                    // link = $(this).find('a').attr('href');
-                                    time = dataInner.trim();
+                                if (j == 2) {                                    
+                                    timeOri = dataInner.trim();
+                                    time = changeTime(timeOri)
                                 }
                                 if (j == 3) {
                                     duration = dataInner.trim();
@@ -44,7 +69,7 @@ const codeforcesupd = function () {
                             })
                             if (name != undefined) {
                                 var codePrevUpd = Date.now();
-                                articles.push({ name, time, duration, toStart, toRegister, link ,codePrevUpd});
+                                articles.push({ name, time, duration, timeOri, toStart, toRegister, link ,codePrevUpd});
                             }
                         })                        
                     }
@@ -64,6 +89,12 @@ const codeforcesupd = function () {
                             console.log('codeforces err 1');
                         }
                     })
+                    if(Date.now()-lastUpdated>10){
+                        setTimeout(function(){
+                            updateSheet(articles,"codeforces");
+                        },15000);                                                                                  
+                        lastUpdated = Date.now();                        
+                    }                    
                 }
             })
             .catch(err => console.log(err));

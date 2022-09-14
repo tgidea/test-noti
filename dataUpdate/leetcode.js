@@ -4,6 +4,42 @@ const cheerio = require('cheerio');
 const axios = require('axios');
 const fs = require('fs');
 const { data } = require('cheerio/lib/api/attributes');
+const updateSheet = require('./updateSheet')
+let lastUpdated = Date.now();
+
+const changeTime = function (str) {
+    var aray = str.split(" ");
+    if(aray.length<2)return str;    
+    var time = ""+aray[1];
+    time = time.split(':');
+    var hrs = parseInt(time[0]);
+    var min = parseInt(time[1]);
+    if(min>=30){
+        min = "00";
+        hrs += 1;
+    }
+    else{min += 30;}
+    hrs += 5;
+    if(hrs>=12){
+        hrs = hrs-12;
+        if(aray[2]=="PM"){
+            aray[2]="AM";
+            var dayIdx = {
+                "sunday" : 0,
+                "monday" : 1,
+                "tuesday" : 2,
+                "wednesday" : 3,
+                "thursday" : 4,
+                "Friday" : 5,
+                "saturday" : 6
+            }
+            var day = ['Sunday', 'Monday' ,'Tuesday','Wednesday','Thursday','Friday', 'Saturday' ];
+            aray[0] = day[ (dayIdx[(""+aray[0]).toLowerCase()]+1)%7 ];            
+        }
+        else aray[2]="PM";
+    }
+    return "" + aray[0] + " " + hrs + ":" + min + " " + aray[2] +" IST";  
+}
 
 const leetcodeUpd = function () {
 
@@ -14,7 +50,7 @@ const leetcodeUpd = function () {
                 const $ = cheerio.load(html);                
                 const articles = [];
                 var i  = 0;
-                let name, time , link;
+                let name, time , link , timeOri;
                 $('.jsx-3209139589', html).each(function () {
                                         
                     // console.log(i);
@@ -27,9 +63,10 @@ const leetcodeUpd = function () {
                         // console.log(name);                        
                     }                                        
                     if(i%9==8){
-                        time = ($(this).text());
+                        timeOri = ($(this).text());
+                        time = changeTime(timeOri);
                         // console.log(time);
-                        articles.push({ link, name , time});
+                        articles.push({ link, name , time , timeOri});
                     }
                     i++;                    
                 })
@@ -44,6 +81,10 @@ const leetcodeUpd = function () {
                             console.log('leetcode err 2');
                         }
                     })
+                    if(Date.now()-lastUpdated>18){                                                                    
+                        updateSheet(articles,"leetcode");
+                        lastUpdated = Date.now();                        
+                    }                    
                 }
             })
             .catch(err => console.log(err));

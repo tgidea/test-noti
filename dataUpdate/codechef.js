@@ -3,6 +3,8 @@ const path = require('path')
 const cheerio = require('cheerio');
 const axios = require('axios');
 const fs = require('fs');
+const updateSheet = require('./updateSheet')
+let lastUpdated = Date.now();
 
 const codechefupd = function () {
     try {
@@ -11,7 +13,7 @@ const codechefupd = function () {
                 const html = res.data;
                 const $ = cheerio.load(html);
                 const articles = [];
-                let day, month, name, time, link;
+                let day, month, name, time, link ,timeOri;
                 $('.m-next-event-card', html).each(function () {
                     $(this).find('.m-card-3__day').each(function () {
                         day = $(this).text()
@@ -46,13 +48,14 @@ const codechefupd = function () {
                     })
                     $(this).find('.m-card-3__time-clock').each(function () {
                         time = $(this).text().trim();
+                        timeOri = time;
                     })
                     $(this).find('.m-card-3__dtl-btn').each(function () {
                         link = $(this).attr('href');
                     })
                     if (day != undefined && name != undefined) {
                         var codePrevUpd = Date.now();
-                        articles.push({ day, month, name, time, link , codePrevUpd});
+                        articles.push({ day, month, name, time, link ,timeOri , codePrevUpd});
                     }
                     // console.log(articles);
                 })
@@ -67,7 +70,14 @@ const codechefupd = function () {
                             console.log('codechef error1');
                         }
                     })
+                    if(Date.now()-lastUpdated>10){
+                        setTimeout(function(){
+                            updateSheet(articles,"codechef");
+                        },5000);                                                                    
+                        lastUpdated = Date.now();                        
+                    }                    
                 }
+                
             })
             .catch(err => console.log(err));
     }

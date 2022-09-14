@@ -41,14 +41,14 @@ const showData = (articles) => {
     var items_list = document.getElementById('items-list');
     if (artitem.length > 0) {        
 
-        for (var i = 0; i < artitem.length; i++) {
-            var time = changeTime(artitem[i].time.toString());
+        for (let i = 0; i < artitem.length; i++) {
+            // var time = changeTime(artitem[i].time.toString());
             var output = "";
             output += `
     <div class="card text-center" style="border-color:#f4511e;">
      <div class="card-body ">
         <p class="card-text font-weight-bold btn-color card-header "><a style="border: 1px solid #f4511e;" href="${artitem[i].link}" class="btn btn-color">${artitem[i].name}</a></p>     
-        <p class="card-text card-header ">${time}</p>
+        <p class="card-text card-header ">${artitem[i].time}</p>
      </div>
     </div>`
             items_list.innerHTML += output;

@@ -42,7 +42,7 @@ const codechefNotification = async () => {
                 const result2 = await SubscribedSecond.find();
                 for (var k = 0; k < data.length; k++) {
                     const first = data[k];
-                    const time = first.time;
+                    const time = first.timeOri;
                     const ist = changeTime(time.toString());
                     const d = new Date();
                     const preTime = `${d.getMonth() + 1}/${d.getDate()}/${d.getFullYear()} ${ist}`;

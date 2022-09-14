@@ -71,8 +71,7 @@ const changeTime = function (str) {
     }
     if (actual.indexOf(NaN) != -1) {
         actual = "Timing Not available.";
-    }
-    
+    }    
     return actual;
 }
 
@@ -82,14 +81,14 @@ const showData = (articles) => {
     if (artitem.length > 0) {
         // showTime(articles[0].codePrevUpd);
         for (var i = 0; i < artitem.length; i++) {
-            var time = changeTime(artitem[i].time.toString());
+            // var time = changeTime(artitem[i].time.toString());
             var output = "";
             output += `
     <div class="card text-center border-color">
      <div class="card-body ">
      <p class="card-text font-weight-bold color card-header ">${artitem[i].name}</p>
-     <p class="card-text card-header "><a href="${artitem[i].timeLink}" class="btn ">${time} </a></p>
-     <a href="${artitem[i].nameLink}" class="btn btn-color text-white">Contest Page</a>
+     <p class="card-text card-header "><a href="${artitem[i].timeLink}" class="btn ">${artitem[i].time}<sup>IST</sup> </a></p>
+     <a href="${artitem[i].link}" class="btn btn-color text-white">Contest Page</a>
        </div>
      </div>`
             items_list.innerHTML += output;
