@@ -1,37 +1,37 @@
 [
   {
-    "name": "UNIQUE VISION Programming Contest 2022 Summer (AtCoder Beginner Contest 268)",
-    "nameLink": "https://atcoder.jp/contests/abc268",
-    "time": "2022-09-10 21:00:00+0900",
-    "timeLink": "http://www.timeanddate.com/worldclock/fixedtime.html?iso=20220910T2100&p1=248",
-    "codePrevUpd": 1662809387221
-  },
-  {
-    "name": "AtCoder Regular Contest 148",
-    "nameLink": "https://atcoder.jp/contests/arc148",
-    "time": "2022-09-11 21:00:00+0900",
-    "timeLink": "http://www.timeanddate.com/worldclock/fixedtime.html?iso=20220911T2100&p1=248",
-    "codePrevUpd": 1662809387221
-  },
-  {
     "name": "estie Programming Contest 2022（AtCoder Heuristic Contest 014）",
     "nameLink": "https://atcoder.jp/contests/ahc014",
     "time": "2022-09-17 15:00:00+0900",
     "timeLink": "http://www.timeanddate.com/worldclock/fixedtime.html?iso=20220917T1500&p1=248",
-    "codePrevUpd": 1662809387221
+    "codePrevUpd": 1663146830973
   },
   {
     "name": "UNICORN Programming Contest 2022(AtCoder Beginner Contest 269)",
     "nameLink": "https://atcoder.jp/contests/abc269",
     "time": "2022-09-17 21:00:00+0900",
     "timeLink": "http://www.timeanddate.com/worldclock/fixedtime.html?iso=20220917T2100&p1=248",
-    "codePrevUpd": 1662809387221
+    "codePrevUpd": 1663146830973
   },
   {
     "name": "TOYOTA MOTOR CORPORATION Programming Contest 2022(AtCoder Beginner Contest 270)",
     "nameLink": "https://atcoder.jp/contests/abc270",
     "time": "2022-09-24 21:00:00+0900",
     "timeLink": "http://www.timeanddate.com/worldclock/fixedtime.html?iso=20220924T2100&p1=248",
-    "codePrevUpd": 1662809387221
+    "codePrevUpd": 1663146830974
+  },
+  {
+    "name": "KYOCERA Programming Contest 2022（AtCoder Beginner Contest 271）",
+    "nameLink": "https://atcoder.jp/contests/abc271",
+    "time": "2022-10-01 21:00:00+0900",
+    "timeLink": "http://www.timeanddate.com/worldclock/fixedtime.html?iso=20221001T2100&p1=248",
+    "codePrevUpd": 1663146830974
+  },
+  {
+    "name": "AtCoder Beginner Contest 272",
+    "nameLink": "https://atcoder.jp/contests/abc272",
+    "time": "2022-10-08 21:00:00+0900",
+    "timeLink": "http://www.timeanddate.com/worldclock/fixedtime.html?iso=20221008T2100&p1=248",
+    "codePrevUpd": 1663146830974
   }
 ]

@@ -17,11 +17,13 @@ const atCoderDataUpdate = require('./dataUpdate/atcoder');
 const codechefDataUpdate = require('./dataUpdate/codechef');
 const codeforcesDataUpdate = require('./dataUpdate/codeforces');
 const tpcUpdate = require('./dataUpdate/tpc');
+const leetcodeUpdate = require('./dataUpdate/leetcode');
 const codeforcesNotification = require('./functions/codeforces');
 const codechefNotification = require('./functions/codechef');
 const addendpoint = require('./functions/addEndpoint');
 const deleteEndpoint = require('./functions/deleteEndpoint');
-// const { channel } = require('diagnostics_channel');
+const fs = require('fs');
+
 //Voluntary application server identity
 
 require('dotenv').config({ path: __dirname + '/config.env' });
@@ -36,7 +38,7 @@ app.use(express.static(staticPath));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-app.get('/', (req, res) => {
+app.post('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'client/index.html'))
 })
 app.post('/subscribe', (req, res) => {
@@ -153,19 +155,38 @@ async function runThis(list , text , channel) {
     }
 }
 
+//********************** */ api service ***************************************
+
+app.get('/api/:platform',async(req,res)=>{
+    try{
+        const platform = req.params.platform;
+        res.sendFile(path.join(__dirname,'./json',`${platform}.json`));               
+    }
+    catch(err){
+        console.log(err);
+        res.send({"data":"Nothing found" , "error":"Some error occured"});
+    }
+
+})
+
+//************************************************************************** */
+
 //Calling json file creater function
 const callingFun = async () => {
     try {
         atCoderDataUpdate();
         codechefDataUpdate();
         codeforcesDataUpdate();
+        leetcodeUpdate();        
         setInterval(async () => {
             atCoderDataUpdate();
             codechefDataUpdate();
             codeforcesDataUpdate();
+            leetcodeUpdate();
         }, 180000);
         setInterval(async()=>{
             tpcUpdate();
+            // console.log('here');
         },1500000);       
     }
     catch (err) {
@@ -178,8 +199,7 @@ function timeToAlert() {
     codeforcesNotification();
     codechefNotification();
 }
-const alertFun = function () {
-    // console.log('alert fun activate');
+const alertFun = function () {    
     timeToAlert();
     setTimeout(function () {
         console.log('setTimeout complete');
