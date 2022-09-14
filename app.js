@@ -24,6 +24,11 @@ const addendpoint = require('./functions/addEndpoint');
 const deleteEndpoint = require('./functions/deleteEndpoint');
 const fs = require('fs');
 
+const leetApiFun = require('./functions/sendLeetApi');
+const codechefApiFun = require('./functions/sendCodeforceApi');
+const codeforcesApiFun = require('./functions/sendCodeforceApi');
+const atcoderApiFun = require('./functions/sendAtcoderApi');
+
 //Voluntary application server identity
 
 require('dotenv').config({ path: __dirname + '/config.env' });
@@ -156,11 +161,15 @@ async function runThis(list , text , channel) {
 }
 
 //********************** */ api service ***************************************
-
+var leet_API , codechef_API , codeforces_API , atcoder_API;
 app.get('/api/:platform',async(req,res)=>{
     try{
-        const platform = req.params.platform;
-        res.sendFile(path.join(__dirname,'./json',`${platform}.json`));               
+        const platform = req.params.platform.toLowerCase();
+        if(platform=="leetcode")leetApiFun(req,res);
+        else if(platform=='codechef')codechefApiFun(req,res);
+        else if(platform=='codeforces')codeforcesApiFun(req,res);
+        else if(platform=='atcoder')atcoderApiFun(req,res);
+        else res.send({"data":"Nothing found" , "error":"Some error occured"});        
     }
     catch(err){
         console.log(err);
