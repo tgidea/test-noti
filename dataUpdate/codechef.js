@@ -4,6 +4,9 @@ const cheerio = require('cheerio');
 const axios = require('axios');
 const fs = require('fs');
 const updateSheet = require('./updateSheet')
+const rasta = path.join(__dirname, '../', 'config.env');
+require('dotenv').config({ path: rasta });
+const excel = process.env.EXCEL;
 let lastUpdated = Date.now();
 
 const codechefupd = function () {
@@ -14,27 +17,6 @@ const codechefupd = function () {
                 const $ = cheerio.load(html);
                 const articles = [];
                 let day, month, name, time, link ,timeOri;
-                $('.m-next-event-card', html).each(function () {
-                    $(this).find('.m-card-3__day').each(function () {
-                        day = $(this).text()
-                    })
-                    $(this).find('.m-card-3__month').each(function () {
-                        month = $(this).text();
-                    })
-                    $(this).find('.m-card-3__head').each(function () {
-                        name = $(this).text();
-                    })
-                    $(this).find('.m-card-3__time-clock').each(function () {
-                        time = $(this).text().trim();
-                    })
-                    $(this).find('.m-card-3__dtl-btn').each(function () {
-                        link = $(this).attr('href');
-                    })
-                    if (day != undefined && name != undefined) {
-                        articles.push({ day, month, name, time, link });
-                    }
-                    // console.log(articles);
-                })
                 $('.m-other-event-card', html).each(function () {
                     $(this).find('.m-card-3__day').each(function () {
                         day = $(this).text()
@@ -53,9 +35,8 @@ const codechefupd = function () {
                     $(this).find('.m-card-3__dtl-btn').each(function () {
                         link = $(this).attr('href');
                     })
-                    if (day != undefined && name != undefined) {
-                        var codePrevUpd = Date.now();
-                        articles.push({ day, month, name, time, link ,timeOri , codePrevUpd});
+                    if (day != undefined && name != undefined) {                        
+                        articles.push({ day, month, name, time, link ,timeOri});
                     }
                     // console.log(articles);
                 })
@@ -70,7 +51,7 @@ const codechefupd = function () {
                             console.log('codechef error1');
                         }
                     })
-                    if(Date.now()-lastUpdated>10){
+                    if(Date.now()-lastUpdated>parseInt(excel)){
                         setTimeout(function(){
                             updateSheet(articles,"codechef");
                         },5000);                                                                    

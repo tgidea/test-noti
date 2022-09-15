@@ -5,6 +5,9 @@ const axios = require('axios');
 const fs = require('fs');
 const { data } = require('cheerio/lib/api/attributes');
 const updateSheet = require('./updateSheet')
+const rasta = path.join(__dirname, '../', 'config.env');
+require('dotenv').config({ path: rasta });
+const excel = process.env.EXCEL;
 let lastUpdated = Date.now();
 
 const changeTime = function (str) {
@@ -81,7 +84,7 @@ const leetcodeUpd = function () {
                             console.log('leetcode err 2');
                         }
                     })
-                    if(Date.now()-lastUpdated>18){                                                                    
+                    if(Date.now()-lastUpdated>parseInt(excel)){                                                                    
                         updateSheet(articles,"leetcode");
                         lastUpdated = Date.now();                        
                     }                    

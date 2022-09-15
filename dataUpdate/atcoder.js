@@ -5,6 +5,10 @@ const axios = require('axios');
 const fs = require('fs');
 const { data } = require('cheerio/lib/api/attributes');
 const updateSheet = require('./updateSheet')
+const rasta = path.join(__dirname, '../', 'config.env');
+require('dotenv').config({ path: rasta });
+const excel = process.env.EXCEL;
+
 let lastUpdated = Date.now();
 const changeTime = function (str) {
     var num1 = "", num2 = "", date = "", carry = 0, actual = "", i, j;
@@ -85,7 +89,7 @@ const atcoderupd = function () {
                         console.log('atcoder error1',err);
                     }
                 }) 
-                if(Date.now()-lastUpdated>10){   
+                if(Date.now()-lastUpdated>parseInt(excel)){   
                     setTimeout(function(){
                         updateSheet(articles,"atcoder");
                     },10000);                                                                               

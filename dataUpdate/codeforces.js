@@ -5,6 +5,9 @@ const axios = require('axios');
 const fs = require('fs');
 const { data } = require('cheerio/lib/api/attributes');
 const updateSheet = require('./updateSheet')
+const rasta = path.join(__dirname, '../', 'config.env');
+require('dotenv').config({ path: rasta });
+const excel = process.env.EXCEL;
 let lastUpdated = Date.now();
 
 const changeTime = function (str) {
@@ -89,7 +92,7 @@ const codeforcesupd = function () {
                             console.log('codeforces err 1');
                         }
                     })
-                    if(Date.now()-lastUpdated>10){
+                    if(Date.now()-lastUpdated>parseInt(excel)){
                         setTimeout(function(){
                             updateSheet(articles,"codeforces");
                         },15000);                                                                                  
