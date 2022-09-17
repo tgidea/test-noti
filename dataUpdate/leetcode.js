@@ -8,8 +8,8 @@ const updateSheet = require('./updateSheet')
 const rasta = path.join(__dirname, '../', 'config.env');
 require('dotenv').config({ path: rasta });
 const excel = process.env.EXCEL;
-let lastUpdated = Date.now();
-
+let lastUpdated = excel+1;
+console.log(lastUpdated);
 const changeTime = function (str) {
     var aray = str.split(" ");
     if(aray.length<2)return str;    
@@ -87,7 +87,8 @@ const leetcodeUpd = function () {
                     if(Date.now()-lastUpdated>parseInt(excel)){                                                                    
                         updateSheet(articles,"leetcode");
                         lastUpdated = Date.now();                        
-                    }                    
+                    }    
+                    console.log(lastUpdated);                
                 }
             })
             .catch(err => console.log(err));

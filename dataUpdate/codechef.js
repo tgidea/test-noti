@@ -7,7 +7,7 @@ const updateSheet = require('./updateSheet')
 const rasta = path.join(__dirname, '../', 'config.env');
 require('dotenv').config({ path: rasta });
 const excel = process.env.EXCEL;
-let lastUpdated = Date.now();
+let lastUpdated = excel+1;
 
 const codechefupd = function () {
     try {
