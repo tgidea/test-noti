@@ -2,16 +2,9 @@
   {
     "name": "estie Programming Contest 2022（AtCoder Heuristic Contest 014）",
     "link": "https://atcoder.jp/contests/ahc014",
-    "time": "2022-09-17 15:00:00+0900",
+    "timeOri": "2022-09-17 15:00:00+0900",
+    "time": "2022-09-17  11:30",
     "timeLink": "http://www.timeanddate.com/worldclock/fixedtime.html?iso=20220917T1500&p1=248"
-  },
-  {
-    "name": "UNICORN Programming Contest 2022(AtCoder Beginner Contest 269)",
-    "link": "https://atcoder.jp/contests/abc269",
-    "timeOri": "2022-09-17 21:00:00+0900",
-    "time": "2022-09-17  17:30",
-    "timeLink": "http://www.timeanddate.com/worldclock/fixedtime.html?iso=20220917T2100&p1=248",
-    "codePrevUpd": 1663395590351
   },
   {
     "name": "TOYOTA MOTOR CORPORATION Programming Contest 2022(AtCoder Beginner Contest 270)",
@@ -19,7 +12,7 @@
     "timeOri": "2022-09-24 21:00:00+0900",
     "time": "2022-09-24  17:30",
     "timeLink": "http://www.timeanddate.com/worldclock/fixedtime.html?iso=20220924T2100&p1=248",
-    "codePrevUpd": 1663395590351
+    "codePrevUpd": 1663815171746
   },
   {
     "name": "KYOCERA Programming Contest 2022（AtCoder Beginner Contest 271）",
@@ -27,7 +20,7 @@
     "timeOri": "2022-10-01 21:00:00+0900",
     "time": "2022-10-01  17:30",
     "timeLink": "http://www.timeanddate.com/worldclock/fixedtime.html?iso=20221001T2100&p1=248",
-    "codePrevUpd": 1663395590351
+    "codePrevUpd": 1663815171746
   },
   {
     "name": "AtCoder Regular Contest 149",
@@ -35,7 +28,7 @@
     "timeOri": "2022-10-02 21:00:00+0900",
     "time": "2022-10-02  17:30",
     "timeLink": "http://www.timeanddate.com/worldclock/fixedtime.html?iso=20221002T2100&p1=248",
-    "codePrevUpd": 1663395590351
+    "codePrevUpd": 1663815171746
   },
   {
     "name": "AtCoder Beginner Contest 272",
@@ -43,7 +36,7 @@
     "timeOri": "2022-10-08 21:00:00+0900",
     "time": "2022-10-08  17:30",
     "timeLink": "http://www.timeanddate.com/worldclock/fixedtime.html?iso=20221008T2100&p1=248",
-    "codePrevUpd": 1663395590352
+    "codePrevUpd": 1663815171747
   },
   {
     "name": "AtCoder Regular Contest 150",
@@ -51,6 +44,6 @@
     "timeOri": "2022-10-09 21:00:00+0900",
     "time": "2022-10-09  17:30",
     "timeLink": "http://www.timeanddate.com/worldclock/fixedtime.html?iso=20221009T2100&p1=248",
-    "codePrevUpd": 1663395590352
+    "codePrevUpd": 1663815171747
   }
 ]

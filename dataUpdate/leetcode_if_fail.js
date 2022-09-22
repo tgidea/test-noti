@@ -9,9 +9,6 @@ const rasta = path.join(__dirname, '../', 'config.env');
 require('dotenv').config({ path: rasta });
 const excel = process.env.EXCEL;
 let lastUpdated = excel+1;
-const alternate = require('./leetcode_if_fail');
-console.log(lastUpdated);
-
 
 const changeTime = function (str) {
     var aray = str.split(" ");
@@ -55,19 +52,19 @@ const leetcodeUpd = function () {
                 const $ = cheerio.load(html);                
                 const articles = [];
                 var i  = 0;                
-                let name, time , link , timeOri;
-                $('.jsx-3209139589', html).each(function () {                                                            
-                    if(i%9==0){                       
-                        link = "https://leetcode.com" + ($(this).find('a').attr('href'));                        
-                    }                    
-                    if(i%9==6){
-                        name = ($(this).text());                                                
-                    }                                        
-                    if(i%9==8){
-                        timeOri = ($(this).text());
-                        time = changeTime(timeOri);                        
+                let name, time ,link , timeOri;
+                $('.swiper-slide', html).each(function () {                       
+                    let url , link , name , numb ;                                                                                           
+                    url = ($(this).find('a').attr('href'));
+                    link = "https://leetcode.com" + url;                                                        
+                    name = url.split("/")[2];                    
+                    timeOri = ($(this).text()); 
+                    numb = name.toString().split("-")[2];
+                    time = timeOri.split(`${numb}`)[1].toString();
+                    if(time.indexOf('Ended')==-1){
+                        time = changeTime(time);                                                                    
                         articles.push({ link, name , time , timeOri});
-                    }
+                    }                                        
                     i++;                    
                 })
                 if (articles.length > 0) {                    
@@ -86,13 +83,9 @@ const leetcodeUpd = function () {
                         lastUpdated = Date.now();                        
                     }    
                 }
-                else{
-                    alternate();
-                }
             })
             .catch(err => console.log(err));
     }
     catch (err) { console.log('leetcode err3') }
 }
-
 module.exports = leetcodeUpd;

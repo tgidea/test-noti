@@ -44,8 +44,9 @@ const atcoderupd = function () {
                     $(this).find('td').each(function () {                    
                         const a = $(this).find('a');                        
                         if (j == 0) {
-                            timeLink = a.attr('href');
-                            time = a.text();
+                            timeLink = a.attr('href');                                
+                            timeOri = a.text();
+                            time = changeTime(timeOri);
                         }
                         if (j == 1) {
                             name = a.text();
@@ -54,7 +55,7 @@ const atcoderupd = function () {
                         j++;
                     })
                     if (name != undefined) {
-                        articles.push({ name, link, time, timeLink });
+                        articles.push({ name, link,timeOri, time, timeLink });
                     }
                 })
                 $('#contest-table-upcoming', html).each(function () {

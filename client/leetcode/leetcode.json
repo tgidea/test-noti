@@ -1,32 +1,14 @@
 [
   {
-    "link": "https://leetcode.com/contest/weekly-contest-311",
-    "name": "Weekly Contest 311",
+    "link": "https://leetcode.com/contest/weekly-contest-312",
+    "name": "weekly-contest-312",
     "time": "Sunday 8:00 AM IST",
-    "timeOri": "Sunday 2:30 AM UTC"
+    "timeOri": "Weekly Contest 312Sunday 2:30 AM UTC"
   },
   {
-    "link": "https://leetcode.com/contest/biweekly-contest-87",
-    "name": "Biweekly Contest 87",
+    "link": "https://leetcode.com/contest/biweekly-contest-88",
+    "name": "biweekly-contest-88",
     "time": "Saturday 8:00 PM IST",
-    "timeOri": "Saturday 2:30 PM UTC"
-  },
-  {
-    "link": "https://leetcode.com/contest/weekly-contest-291",
-    "name": "Weekly Contest 291",
-    "time": "Ended",
-    "timeOri": "Ended"
-  },
-  {
-    "link": "https://leetcode.com/contest/weekly-contest-290",
-    "name": "Weekly Contest 290",
-    "time": "Ended",
-    "timeOri": "Ended"
-  },
-  {
-    "link": "https://leetcode.com/contest/biweekly-contest-85",
-    "name": "Biweekly Contest 85",
-    "time": "Ended",
-    "timeOri": "Ended"
+    "timeOri": "Biweekly Contest 88Saturday 2:30 PM UTC"
   }
 ]

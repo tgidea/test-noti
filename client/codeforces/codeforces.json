@@ -4,70 +4,80 @@
     "time": "Sep/15/2022  5:30",
     "duration": "15:00:00",
     "timeOri": "Sep/15/2022 03:00",
-    "toStart": "Current standings\n                \n                    Running\n                    13 days",
-    "toRegister": "Register »\n x17151\n                    Until closing 13 days",
+    "toStart": "Current standings\n                \n                    Running\n                    8 days",
+    "toRegister": "Register »\n x18300\n                    Until closing 8 days",
     "link": "https://codeforces.com/contests",
-    "codePrevUpd": 1663395591909
+    "codePrevUpd": 1663815172604
   },
   {
     "name": "\nICPC 2022 Online Challenge powered by HUAWEI - Problem 2\n                \n                    \n                            Enter »\n                    \n                \n    ",
     "time": "Sep/15/2022  5:30",
     "duration": "15:00:00",
     "timeOri": "Sep/15/2022 03:00",
-    "toStart": "Current standings\n                \n                    Running\n                    13 days",
-    "toRegister": "Register »\n x14062\n                    Until closing 13 days",
+    "toStart": "Current standings\n                \n                    Running\n                    8 days",
+    "toRegister": "Register »\n x14750\n                    Until closing 8 days",
     "link": "https://codeforces.com/contests",
-    "codePrevUpd": 1663395591909
-  },
-  {
-    "name": "\nCodeforces Round #821 (Div. 2)\n    ",
-    "time": "Sep/19/2022  20:5",
-    "duration": "02:00",
-    "timeOri": "Sep/19/2022 17:35",
-    "toStart": "Before start 2 days",
-    "toRegister": "Before registration\n                        08:15:11",
-    "link": "https://codeforces.com/contests",
-    "codePrevUpd": 1663395591909
+    "codePrevUpd": 1663815172604
   },
   {
     "name": "\nCodeforces Round #822 (Div. 2)\n    ",
-    "time": "Sep/23/2022  20:5",
+    "time": "Sep/23/2022  17:35",
     "duration": "02:00",
-    "timeOri": "Sep/23/2022 17:35",
-    "toStart": "Before start 6 days",
-    "toRegister": "Before registration\n                        4 days",
+    "timeOri": "Sep/23/2022 15:05",
+    "toStart": "Before start 33:12:09",
+    "toRegister": "Register »\n x4375\n                    Until closing 33:07:09\n                        *has extra registration",
     "link": "https://codeforces.com/contests",
-    "codePrevUpd": 1663395591909
+    "codePrevUpd": 1663815172604
   },
   {
     "name": "\nCodeforces Round (Div. 1 + Div. 2)\n    ",
     "time": "Sep/25/2022  20:5",
     "duration": "02:30",
     "timeOri": "Sep/25/2022 17:35",
-    "toStart": "Before start 8 days",
-    "toRegister": "Before registration\n                        6 days",
+    "toStart": "Before start 4 days",
+    "toRegister": "Before registration\n                        35:42:09",
     "link": "https://codeforces.com/contests",
-    "codePrevUpd": 1663395591909
+    "codePrevUpd": 1663815172605
   },
   {
     "name": "\nCodeforces Round (Div. 2)\n    ",
     "time": "Oct/02/2022  20:5",
     "duration": "02:00",
     "timeOri": "Oct/02/2022 17:35",
-    "toStart": "Before start 2 weeks",
-    "toRegister": "Before registration\n                        13 days",
+    "toStart": "Before start 11 days",
+    "toRegister": "Before registration\n                        9 days",
     "link": "https://codeforces.com/contests",
-    "codePrevUpd": 1663395591909
+    "codePrevUpd": 1663815172605
+  },
+  {
+    "name": "\nCodeforces Round (Div. 1 + Div. 2)\n    ",
+    "time": "Oct/07/2022  20:5",
+    "duration": "02:30",
+    "timeOri": "Oct/07/2022 17:35",
+    "toStart": "Before start 2 weeks",
+    "toRegister": "Before registration\n                        2 weeks",
+    "link": "https://codeforces.com/contests",
+    "codePrevUpd": 1663815172605
+  },
+  {
+    "name": "\nCodeforces Round (Div. 2)\n    ",
+    "time": "Oct/10/2022  20:5",
+    "duration": "02:00",
+    "timeOri": "Oct/10/2022 17:35",
+    "toStart": "Before start 3 weeks",
+    "toRegister": "Before registration\n                        2 weeks",
+    "link": "https://codeforces.com/contests",
+    "codePrevUpd": 1663815172605
   },
   {
     "name": "\nCodeforces Round (Div. 2)\n    ",
     "time": "Oct/23/2022  15:35",
     "duration": "02:00",
     "timeOri": "Oct/23/2022 13:05",
-    "toStart": "Before start 5 weeks",
-    "toRegister": "Before registration\n                        5 weeks",
+    "toStart": "Before start 4 weeks",
+    "toRegister": "Before registration\n                        4 weeks",
     "link": "https://codeforces.com/contests",
-    "codePrevUpd": 1663395591910
+    "codePrevUpd": 1663815172605
   },
   {
     "name": "\nCodeforces Round (Div. 2)\n    ",
@@ -77,6 +87,6 @@
     "toStart": "Before start 3 months",
     "toRegister": "Before registration\n                        3 months",
     "link": "https://codeforces.com/contests",
-    "codePrevUpd": 1663395591910
+    "codePrevUpd": 1663815172605
   }
 ]

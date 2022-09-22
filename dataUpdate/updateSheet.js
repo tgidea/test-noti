@@ -7,6 +7,7 @@ const password = process.env.PASS;
 const url = process.env.URL;
 
 const receiveExcel = async(aray,platform)=>{
+    console.log(platform);
     const obj = {
         "data" : aray,
         platform,
