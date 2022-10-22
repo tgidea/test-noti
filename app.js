@@ -105,6 +105,7 @@ app.post('/create', async (req, res) => {
         res.status(400).send({ "result": 'This name is already taken' });
     }
 })
+
 app.post('/sendnoti', async (req, res) => {
     try {
         const message = req.body.message.toString();

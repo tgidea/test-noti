@@ -36,8 +36,8 @@ const showData = (articles) => {
     <div class="card text-center border-color" style="border-color:#f4511e;">
      <div class="card-body ">
      <p class="card-text btn-color font-weight-bold card-header ">${artitem[i].name}</p>
-     <p class="card-text card-header ">${artitem[i].day} ${artitem[i].month} ${artitem[i].time}  <sup>IST</sup></p>
-    <a href="${artitem[i].link}" class="btn btn-color" style="border-color:#f4511e;">Set reminder</a>
+     <p class="card-text card-header ">${artitem[i].day} ${artitem[i].month} ${artitem[i].time}</p>
+    <a href="${artitem[i].link}" class="btn btn-color" style="border-color:#f4511e;">See Contest</a>
        </div>
      </div>`
             items_list.innerHTML += output;

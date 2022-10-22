@@ -39,7 +39,7 @@ const codeforcesupd = function () {
         axios('https://codeforces.com/contests')
             .then(res => {
                 const html = res.data;
-                const $ = cheerio.load(html);
+                const $ = cheerio.load(html);                
                 let i = 0;
                 const articles = [];
                 let name, time, duration, toStart, toRegister, link , timeOri;
