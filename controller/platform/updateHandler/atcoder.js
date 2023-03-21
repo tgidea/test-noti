@@ -80,7 +80,7 @@ const atcoderupd = function () {
                         }
                     })
                 })
-                fs.writeFile(path.join(__dirname, '../../../json/', 'atcoder.json'), JSON.stringify(articles, null, 2), (err) => {
+                fs.writeFile(path.join(__dirname, '../../../client/json/', 'ATCODER.json'), JSON.stringify(articles, null, 2), (err) => {
                     if (err) {
                         console.log('atcoder error1',err);
                     }

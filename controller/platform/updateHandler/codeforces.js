@@ -80,7 +80,7 @@ const codeforcesupd = function () {
                     i++;
                 })
                 if (articles.length > 0) {
-                    fs.writeFile(path.join(__dirname, '../../../json/', 'codeforces.json'), JSON.stringify(articles, null, 2), (err) => {
+                    fs.writeFile(path.join(__dirname, '../../../client/json/', 'CODEFORCES.json'), JSON.stringify(articles, null, 2), (err) => {
                         if (err) {
                             console.log('codeforces err 1');
                         }

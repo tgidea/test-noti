@@ -16,7 +16,7 @@ const tpc = async () =>{
                     let name = $(this).find('a').text();                                                           
                     articles.push({name,link});
                 });                
-                fs.writeFile(path.join(__dirname, '../../../json/', 'tpc.json'), JSON.stringify(articles, null, 2), (err) => {
+                fs.writeFile(path.join(__dirname, '../../../client/json/', 'TPC.json'), JSON.stringify(articles, null, 2), (err) => {
                     if (err) {
                         console.log(err , 'in tpc');
                     }                    

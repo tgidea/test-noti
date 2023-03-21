@@ -30,10 +30,9 @@ const public_keys = 'BIVj4YrGKo27YGVRf4oGmWEuQmKP3RU4-hpqYgiOA1euhIxTGww0tRira53
 webpush.setVapidDetails('mailto:gyanexplode@gmail.com', public_keys, private_keys);
 
 const staticPath = path.join(__dirname, './client');
-const jsonPath = path.join(__dirname,'./json');
 app.use('/css',express.static(staticPath));
 app.use('/js', express.static(staticPath));
-app.use('/json', express.static(jsonPath));
+app.use('/json', express.static(staticPath));
 
 app.set('view engine','ejs');
 app.use(express.static(staticPath));
@@ -87,7 +86,7 @@ const alertFun = function () {
         alertFun();
     }, 600000)    
 }
-// callingFun();
+callingFun();
 alertFun();
 
 app.get('*',function(req,res){

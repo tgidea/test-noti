@@ -68,7 +68,7 @@ const leetcodeUpd = function () {
                     i++;                    
                 })
                 if (articles.length > 0) {                    
-                    fs.writeFile(path.join(__dirname, '../../../json/', 'leetcode.json'), JSON.stringify(articles, null, 2), (err) => {
+                    fs.writeFile(path.join(__dirname, '../../../client/json/', 'LEETCODE.json'), JSON.stringify(articles, null, 2), (err) => {
                         if (err) {console.log(err);}
                     })                                  
                     if(Date.now()-lastUpdated>parseInt(excel)){                                                                    

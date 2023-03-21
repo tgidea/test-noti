@@ -43,7 +43,7 @@ const codechefupd = function () {
                 }                
 
                 if (articles.length > 0) {                    
-                    fs.writeFile(path.join(__dirname, '../../../json/', 'codechef.json'), JSON.stringify(articles, null, 2), (err) => {
+                    fs.writeFile(path.join(__dirname, '../../../client/json/', 'CODECHEF.json'), JSON.stringify(articles, null, 2), (err) => {
                         if (err) {
                             console.log('codechef error1');
                         }
