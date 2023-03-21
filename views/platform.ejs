@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/css/main.css" />
+    <style>
+      .color {
+        color: #f4511e;
+      }
+      .border-color {
+        border: 0.4px solid #f4511e;
+      }
+      .head {
+        margin-top: 45px;
+        margin-bottom: 20px;
+      }
+      p {
+        font-size: larger;
+      }
+    </style>
+    <title>MyUpdates/<%=platform %></title>
+  </head>
+
+  <body>
+    <%- include('./partials/navbar.ejs') %>
+    <div class="container head">
+      <a href="https://<%=platform %>.<%=end%>/" style="text-decoration: none">
+        <h1 style="margin-top: 20px" class="display-8 text-center">
+          <span class="color"><%=platform %> UPDATES</span>
+        </h1>
+      </a>
+      <p id="lastupd" style="font-size: 15px" class="text-center"></p>
+    </div>
+
+    <div class="container mb-5" id="items-list"></div>
+
+    <script>
+      const showData = (articles) => {
+        const artitem = articles;
+        var items_list = document.getElementById("items-list");
+        if (artitem.length > 0) {
+          for (var i = 0; i < artitem.length; i++) {
+            var output = "";
+            output += `
+                <div class="card text-center border-color">
+                    <div class="card-body ">
+                        <p class="font-weight-bold color">${artitem[i].name}</p>`;
+            if(artitem[i].time != undefined){
+                output += ` <p><a style="font-size:large;" href="${artitem[i].timeLink}" class="btn ">${artitem[i].time}<sup>IST</sup> </a></p>`;
+            }
+            output += `<a style="font-size:large;" href="${artitem[i].link}" class="btn btn-color text-white">Visit</a>
+                    </div>
+                </div>`;
+            items_list.innerHTML += output;
+          }
+        } else {
+          items_list.innerHTML = `<div class="container text-center"><h5>No eventes are scheduled for now</h5></div>`;
+        }
+      };
+      const fetching = () => {
+        try {
+          fetch("/json/<%=platform %>.json")
+            .then(function (resp) {
+              return resp.json();
+            })
+            .then(function (data) {
+              showData(data);
+            });
+        } catch (err) {
+          console.log(err);
+        }
+      };      
+      fetching();
+    </script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

@@ -1,0 +1,55 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">MU</a>
+    </div>
+    <svg
+      id="navBtn"
+      xmlns="http://www.w3.org/2000/svg"
+      width="20"
+      height="20"
+      fill="white"
+      class="bi bi-list"
+      viewBox="0 0 16 16"
+      >
+      <path
+      fill-rule="evenodd"
+      d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"
+      />
+    </svg>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right" style="font-size: medium;">
+        <li><a href="/">HOME</a></li>
+        <li><a href="/#sites">SITES</a></li>
+        <li><a href="/#contact">CONTACT</a></li>
+        <li><a href="/service">SERVICE</a></li>
+        <li><a href="/help">MORE</a></li>
+      </ul>
+    </div>
+    <ul
+    id="phone"
+    class="nav navbar-nav hide"
+    style="border-top: 2px solid white; border-bottom: 2px solid white"
+    >
+      <li style="text-decoration: none; margin-right: 15px">
+        <a style="text-decoration: none" href="/">HOME</a>
+      </li>
+      <li style="text-decoration: none; margin-right: 15px">
+        <a style="text-decoration: none" href="mailto:gyanexplode@gmail.com"
+          >CONTACT</a
+          >
+      </li>
+      <li style="text-decoration: none; margin-right: 15px">
+        <a style="text-decoration: none" href="/service">SERVICE</a>
+      </li>
+      <li style="text-decoration: none; margin-right: 15px">
+        <a style="text-decoration: none" href="/help">MORE</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<script>
+  document.getElementById("navBtn").addEventListener("click", function () {
+    document.getElementById("phone").classList.toggle("hide");
+  });
+</script>

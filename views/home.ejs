@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>  
+  <title>MyUpdates</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+<%- include('./partials/navbar.ejs') %>
+
+<div id="about" class="jumbotron text-center">
+  <h1>MyUpdates</h1> 
+  <p>We provide notification sending service which help your audience or customer to stay connected with you. Along this we notify you about upcoming coding contest.</p> 
+  <form>
+    <div class="input-group">
+      <div class="input-group-btn">
+        <a href="/subscribe" style="background-color: white;color:#f4511e; border-radius: 20px;" class="btn">Subscribe</a>
+        <a href="/service_create" style="background-color: white;color:#f4511e; border-radius: 20px;margin-left: 20px;" class="btn">Create</a>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+<div id="sites" class="container-fluid text-center">
+  <h2>Added Platform</h2>  
+  <br>
+  <div class="row slideanim">
+    <div class="col-sm-3">
+      <a href="/platform/codechef" style="color:black">
+        <span class="iconify" data-icon="simple-icons:codechef"   data-width="100" data-height="100"></span>
+        <h4>CODECHEF</h4>
+      </a>
+    
+    </div>
+    <div class="col-sm-3">
+      <a href="/platform/codeforces" style="color:black">
+        <span class="iconify" data-icon="simple-icons:codeforces"  data-width="100" data-height="100"></span>
+        <h4>CODEFORCES</h4>
+      </a>      
+    </div>
+    <div class="col-sm-3">
+      <a href="/platform/leetcode" style="color:black">
+        <img src="https://leetcode.com/static/images/LeetCode_logo.png" style="width:118px" a="atcoder icon">
+        <h4>LEETCODE</h4>
+      </a>      
+    </div>
+    <div class="col-sm-3">
+      <a href="/platform/atcoder" style="color:black">
+        <img src="https://img.atcoder.jp/assets/atcoder.png" style="width:118px" a="atcoder icon">
+        <h4>ATCODER</h4>
+      </a>
+    </div>
+  </div>
+  <br><br>
+
+  </div>
+</div>
+
+<div id="contact" class="container-fluid bg-grey">
+  <h2 class="text-center">CONTACT</h2>
+  <div class="row">
+    <div class="col-sm-5">
+      <p>Contact us and we'll get back to you within 24 hours.</p>
+      <p><span class="glyphicon glyphicon-map-marker"></span> Haryana, India</p>      
+    </div>
+    <div class="col-sm-7 slideanim">
+      <form id="contactform">
+        <div class="row">
+          <div class="col-sm-6 form-group">
+            <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
+          </div>
+          <div class="col-sm-6 form-group">
+            <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
+          </div>
+        </div>
+        <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea><br>
+        <div class="row">
+          <div class="col-sm-12 form-group">
+            <p id="noti"></p>
+            <button id="contact" class="btn btn-default pull-right" type="submit">Send</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<%- include('./partials/footer.ejs') %>
+
+<script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
+<script src="/js/home.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+crossorigin="anonymous"
+></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</body>
+</html>

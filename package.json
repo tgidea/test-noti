@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "nodemon app.js"
   },
   "keywords": [],
   "author": "",
@@ -14,8 +14,11 @@
     "body-parser": "^1.20.0",
     "cheerio": "^1.0.0-rc.10",
     "dotenv": "^16.0.0",
+    "ejs": "^3.1.8",
     "express": "^4.17.3",
+    "fcm-node": "^1.6.1",
     "mongoose": "^6.2.10",
+    "nodemon": "^2.0.20",
     "web-push": "^3.4.5"
   },
   "devDependencies": {}
