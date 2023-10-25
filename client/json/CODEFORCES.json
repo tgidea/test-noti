@@ -1,62 +1,62 @@
 [
   {
-    "name": "\nEducational Codeforces Round 145 (Rated for Div. 2)\n    ",
-    "time": "Mar/23/2023  20:5",
-    "duration": "02:00",
-    "timeOri": "Mar/23/2023 17:35",
-    "toStart": "Before start 42:17:14",
-    "toRegister": "Register »\n x26322\n                    Until closing 44:17:14",
+    "name": "\nCodeforces Round (Div. 1)\n    ",
+    "time": "Oct/28/2023  20:5",
+    "duration": "02:30",
+    "timeOri": "Oct/28/2023 17:35",
+    "toStart": "Before start 3 days",
+    "toRegister": "Register »\n x303\n                    Until closing 3 days\n                        *has extra registration",
     "link": "https://codeforces.com/contests",
-    "codePrevUpd": 1679429866606
+    "codePrevUpd": 1698220127233
   },
   {
-    "name": "\nCodeforces Round 860 (Div. 2)\n    ",
-    "time": "Mar/26/2023  20:5",
+    "name": "\nCodeforces Round (Div. 2)\n    ",
+    "time": "Oct/28/2023  20:5",
+    "duration": "02:30",
+    "timeOri": "Oct/28/2023 17:35",
+    "toStart": "Before start 3 days",
+    "toRegister": "Register »\n x4390\n                    Until closing 3 days\n                        *has extra registration",
+    "link": "https://codeforces.com/contests",
+    "codePrevUpd": 1698220127233
+  },
+  {
+    "name": "\nCodeforces Round (Div. 2)\n    ",
+    "time": "Oct/30/2023  20:5",
     "duration": "02:00",
-    "timeOri": "Mar/26/2023 17:35",
+    "timeOri": "Oct/30/2023 17:35",
     "toStart": "Before start 5 days",
-    "toRegister": "Before registration\n                        42:17:14",
+    "toRegister": "Before registration\n                        3 days",
     "link": "https://codeforces.com/contests",
-    "codePrevUpd": 1679429866607
+    "codePrevUpd": 1698220127233
   },
   {
-    "name": "\nCodeforces Round 861 (Div. 2)\n    ",
-    "time": "Mar/29/2023  14:35",
+    "name": "\nCodeforces Round (Div. 1)\n    ",
+    "time": "Nov/07/2023  20:5",
     "duration": "02:00",
-    "timeOri": "Mar/29/2023 12:05",
-    "toStart": "Before start 8 days",
-    "toRegister": "Before registration\n                        5 days",
-    "link": "https://codeforces.com/contests",
-    "codePrevUpd": 1679429866607
-  },
-  {
-    "name": "\nCodeTON Round 4 (Div. 1 + Div. 2, Rated, Prizes!)\n    ",
-    "time": "Mar/31/2023  20:5",
-    "duration": "02:00",
-    "timeOri": "Mar/31/2023 17:35",
-    "toStart": "Before start 10 days",
-    "toRegister": "Before registration\n                        42:17:14",
-    "link": "https://codeforces.com/contests",
-    "codePrevUpd": 1679429866607
-  },
-  {
-    "name": "\nCodeforces Round 862 (Div. 2)\n    ",
-    "time": "Apr/02/2023  20:5",
-    "duration": "02:00",
-    "timeOri": "Apr/02/2023 17:35",
-    "toStart": "Before start 12 days",
+    "timeOri": "Nov/07/2023 17:35",
+    "toStart": "Before start 13 days",
     "toRegister": "Before registration\n                        9 days",
     "link": "https://codeforces.com/contests",
-    "codePrevUpd": 1679429866607
+    "codePrevUpd": 1698220127233
   },
   {
-    "name": "\nCodeforces Round 863 (Div. 2)\n    ",
-    "time": "Apr/08/2023  19:35",
+    "name": "\nCodeforces Round (Div. 2)\n    ",
+    "time": "Nov/07/2023  20:5",
     "duration": "02:00",
-    "timeOri": "Apr/08/2023 17:05",
-    "toStart": "Before start 3 weeks",
-    "toRegister": "Before registration\n                        2 weeks",
+    "timeOri": "Nov/07/2023 17:35",
+    "toStart": "Before start 13 days",
+    "toRegister": "Before registration\n                        9 days",
     "link": "https://codeforces.com/contests",
-    "codePrevUpd": 1679429866607
+    "codePrevUpd": 1698220127233
+  },
+  {
+    "name": "\n2023 ICPC Post-World Finals Challenge powered by Huawei\n    ",
+    "time": "Nov/20/2023  12:30",
+    "duration": "14:00:00",
+    "timeOri": "Nov/20/2023 10:00",
+    "toStart": "Before start 4 weeks",
+    "toRegister": "Register »\n x7278\n                    Until closing 6 weeks",
+    "link": "https://codeforces.com/contests",
+    "codePrevUpd": 1698220127234
   }
 ]

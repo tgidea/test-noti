@@ -31,25 +31,24 @@ async function sendToken(token) {
         alert_msg.innerHTML = `Click <a href="help.html">here</a> if not able to subscribe`;
     }
 }
+const firebaseConfig = {
+    apiKey: "AIzaSyDKGsoV344Ximd8NBJhilNOUp5rg8WVhYY",
+    authDomain: "notification-167c9.firebaseapp.com",
+    projectId: "notification-167c9",
+    storageBucket: "notification-167c9.appspot.com",
+    messagingSenderId: "835809630294",
+    appId: "1:835809630294:web:3e9b2b8e0f66a4225843f7",
+    measurementId: "G-GMM91N2NXG",
+};
+firebase.initializeApp(firebaseConfig);
+
 const getToken = async () => {
-    const firebaseConfig = {
-        apiKey: "AIzaSyDKGsoV344Ximd8NBJhilNOUp5rg8WVhYY",
-        authDomain: "notification-167c9.firebaseapp.com",
-        projectId: "notification-167c9",
-        storageBucket: "notification-167c9.appspot.com",
-        messagingSenderId: "835809630294",
-        appId: "1:835809630294:web:3e9b2b8e0f66a4225843f7",
-        measurementId: "G-GMM91N2NXG",
-    };
-    firebase.initializeApp(firebaseConfig);
 
     const messaging = firebase.messaging();
     Notification.requestPermission().then(permission => {
-        console.log(permission);
         if (permission == 'granted') {
             messaging.getToken({ vapidKey: "BLz6MaZ-JRFL77u_XhsBUwpiupOEM8H7WeAWv4LlYvMETt2eeqOZK2nUzN17XkjXzxAYYMHtf1Y9q1Xmw-Rf2PE" }).then(currentToken => {                                
-                sendToken(currentToken);
-                console.log(currentToken);
+                sendToken(currentToken);                
                 return currentToken;
             })
         }

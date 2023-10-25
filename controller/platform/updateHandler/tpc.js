@@ -6,7 +6,7 @@ const fs = require('fs');
 
 const tpc = async () =>{    
     try {
-        axios('https://jcboseust.ac.in/tpo/placement-record')
+        axios('https://www.jcboseust.ac.in/tpo/placement-record')
             .then(res => {                
                 const html = res.data;                
                 const $ = cheerio.load(html);                
@@ -24,7 +24,7 @@ const tpc = async () =>{
             })
             .catch(err => console.log(err));
     }
-    catch (err) { console.log(err) };        
+    catch (err) { console.log("error in jcbose/tpo") };        
 }
 tpc()
 module.exports = tpc;
